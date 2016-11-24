@@ -109,19 +109,20 @@ for i, course in enumerate(bachelor_courses):
                             tmpgradeslist=[]
                             for grade in grades:
                                 nppl = extractstr(grade + ' </td> <td style="text-align: center"> ', ' </td> <td style="vertical-align', content)
-                                if (nppl != ''):
-                                    printlog(grade+": " + str(nppl))
-                                    tmpgradeslist.append(int(nppl))
-                                else:
+                                if (nppl == ''):
+                                    nppl=0
                                     if ( (grade==grades[0]) or (grade==grades[1]) ):
                                         printlog("Warning: No entry for " + grade)
                                     else:
 
                                         printlog("Error: No entry for " + grade)
                                         error=1
+                                printlog(grade+": " + str(nppl))
+                                tmpgradeslist.append(int(nppl))
                             if error==0:
                                 gradesDB.append([])
                                 gradesDB[grades_success_counter].append(str(course))
+                                gradesDB[grades_success_counter].append(participants)
                                 gradesDB[grades_success_counter].extend(tmpgradeslist)
                                 printlog("Breaking")
                                 grades_success_counter+=1
