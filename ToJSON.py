@@ -33,10 +33,10 @@ for i, lst in enumerate(reviewsDB):
 
 #print(json.dumps(rdict, indent=4))
 
-with open('extension/gradesDB.json', 'w') as outfile:
+with open('gradesDB.json', 'w') as outfile:
     json.dump(gdict, outfile)
 
-with open('extension/reviewsDB.json', 'w') as outfile:
+with open('reviewsDB.json', 'w') as outfile:
     json.dump(rdict, outfile)
 # with open('reviewsDB.json', 'w') as outfile:
 #     json.dump(reviewsDB, outfile)
