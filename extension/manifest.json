@@ -1,16 +1,13 @@
 {
-  "manifest_version": 2,
-
-  "name": "Getting started example",
-  "description": "This extension shows a Google Image search result for the current page",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "permissions": [
-    "activeTab",
-    "https://ajax.googleapis.com/"
-  ]
+"name":"Inject DOM",
+"description":"http://stackoverflow.com/questions/14068879",
+"version":"1",
+"manifest_version":2,
+"content_scripts": [
+    {
+      "matches": ["http://kurser.dtu.dk/course/*", "http://www.vask-rul-rens-service.dk/*"],
+      "js": ["jquery.js", "db/data.js", "contentscript.js" ]
+    }
+  ],
+"web_accessible_resources": ["db/data.js", "data.js", "script.js"]
 }
