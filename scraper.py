@@ -79,7 +79,7 @@ def RepresentsInt(s):
 courseDic={}
 fields=["participants", "absent", "sick", "p", "np", "-3", "00", "02", "4", "7", "10", "12"]
 
-for i, course in enumerate(courses):
+for i, course in enumerate(courses[0:6]):
     printTime()
     courseDic[course] = {}
 
