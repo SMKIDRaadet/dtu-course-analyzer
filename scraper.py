@@ -190,4 +190,4 @@ f.close()
 pp = pprint.PrettyPrinter(indent=4)
 pp.pprint(courseDic)
 
-printlog("Requests sent: " + reqC)
+printlog("Requests sent: " + str(reqC))
