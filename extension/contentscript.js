@@ -45,7 +45,7 @@ function presentData(data){
 	for(i = 0; i < outputArr.length; i++){
 		addRow(outputArr[i][0], data[outputArr[i][1]] + outputArr[i][2])
 	}
-	addRow("<a href='#'><label>What is this?</label</a>", "")
+	addRow("<a href='https://github.com/OskarNS/dtu-course-scraper/blob/master/README.md' target='_blank'><label>What is this?</label</a>", "")
 }
 
 function addElement(html, index){
