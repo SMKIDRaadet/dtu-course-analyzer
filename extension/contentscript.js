@@ -11,7 +11,6 @@ if( !(isNumeric(course[course.length -1])) ){
 		course=course.slice(0,-1)
 }
 //console.log("course=" + course)
-course="00000"
 
 if(course.length==5 && isNumeric(course)){
 	if(matchRuleShort(window.location.href, "http*://kurser.dtu.dk/course/*")){
@@ -32,11 +31,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		//console.log(request[course])
 
 		//console.log(getHTML(request[course]))
-		presentData(request[course])
 	} else if(request[course]==false){
-			console.log("Wrong or no information received from db:")
-			console.log(request[course])
+		console.log("Wrong or no information received from db")
 	}
+	console.log("received msg")
+	presentData(request[course])
+
 });
 
 outputArr = [ ["Average grade", "avg", ""], ["Average grade percentile", "avgp", "%"], ["Percent passed", "passpercent", "%"], ["Course rating percentile", "qualityscore", "%"], ["Workload percentile", "workscore", "%"], ["Lazy score percentile", "lazyscore", "%"]]
@@ -44,15 +44,23 @@ function presentData(data){
 	addElement('<hr>',1);
 	addElement('<table><tbody id="DTU-Course-Analyzer"></tbody></table>',2);
 	console.log(data)
-	
 	addRow("—DTU Course Analyzer—", "");
-	for(i = 0; i < outputArr.length; i++){
-		val=data[outputArr[i][1]]
-		if (typeof val != 'undefined'){
-			addRow(outputArr[i][0], data[outputArr[i][1]] + outputArr[i][2])
+
+	if(data){
+		for(i = 0; i < outputArr.length; i++){
+			key=outputArr[i][1]
+			val=data[key]
+			if (key=="workscore"){
+				val=100-val
+			}
+			if (typeof val != 'undefined'){
+				addRow(outputArr[i][0], val + outputArr[i][2])
+			}
 		}
+	} else {
+		addRow("No data found for this course", "")
 	}
-	addRow("<a href='https://github.com/OskarNS/dtu-course-scraper/blob/master/README.md' target='_blank'><label>What is this?</label</a>", "")
+	addRow("<a href='https://github.com/OskarNS/dtu-course-analyzer/blob/master/README.md' target='_blank'><label>What is this?</label</a>", "")
 }
 
 function addElement(html, index){

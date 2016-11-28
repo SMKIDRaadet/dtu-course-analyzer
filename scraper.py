@@ -55,6 +55,7 @@ def extractlinks(html):
 
 reqC=0
 def gethtml(url):
+    global reqC
     reqC+=1
     req = urllib2.Request(url)
     req.add_header('Cookie', key)

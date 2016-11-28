@@ -147,10 +147,23 @@ with PrependToFile(extFilename) as f:
 
 pp.pprint(outDic)
 
-#pp.pprint(scoringLst['quality'])
+html=''
+headNames=[ ["avg", "Average Grade"], ["avgp", "Average Grade Percentile"], ["passpercent", "Percent Passed"], ["lazyscore", "Lazy Score Percentile"], ["qualityscore", "Qualityscore"] ]
+html+='<table id="table_id" class="display"><thead><tr>'
+html+='<th>Course</th>'
+for header in headNames:
+	html+='<th>'+header[1]+'</th>'
+html+='</tr></thead><tbody>'
 
-
-new_list = list(scoringLst['quality'])
-new_list.sort(key=lambda sublist: sublist[0], reverse=True)
-new_list.sort(key=lambda sublist: sublist[1])
-pp.pprint(new_list)
+for course, data in outDic.iteritems():
+	html+='<tr>'
+	html+='<td>' + course + '</td>'
+	for header in headNames:
+		key=header[0]
+		val=""
+		if key in data:
+			val=str(data[key])
+		html+='<td>' + val + '</td>'
+	html+='</tr>'
+html+='</tbody></table>'
+print html
