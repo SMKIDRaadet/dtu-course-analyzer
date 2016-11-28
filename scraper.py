@@ -22,8 +22,8 @@ print 'key=' + key
 #f = open('myfile.txt','w')
 #f.write(content) # python will convert \n to os.linesep
 #f.close() # you can omit in most cases as the destructor will call it
-f = open('out.txt','w')
 def printlog(txt):
+    f = open('out.txt','w')
     print(txt)
     f.write(txt+'\n') # python will convert \n to os.linesep
 
