@@ -1,5 +1,4 @@
 # DTU Course Analyzer
-
 ##Chrome extension
 The following is an explanation of how the values was calculated
   * Average grade
@@ -9,3 +8,5 @@ The following is an explanation of how the values was calculated
 
 ##Data gathering and analysis
 Data was gathered using a Python script that scraped DTU's coursebase and formatted it so that the extension can use it.
+
+dtu.course.analyzer@gmail.com
