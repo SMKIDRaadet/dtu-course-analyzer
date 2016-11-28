@@ -53,6 +53,7 @@ function presentData(data){
 			if (key=="workscore"){
 				val=100-val
 			}
+			val=Math.round(val * 10) / 10
 			if (typeof val != 'undefined'){
 				addRow(outputArr[i][0], val + outputArr[i][2])
 			}
