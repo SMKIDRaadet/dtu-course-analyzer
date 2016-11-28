@@ -59,6 +59,7 @@ def ScoreQ(lst, index, key, course):
 
 ppLst=[]
 outDic={}
+avgLst=[]
 
 keysToSave=['avg', 'passpercent']
 for course, categorydb in courseDic.iteritems():
@@ -81,6 +82,8 @@ for course, categorydb in courseDic.iteritems():
 		if category=='grades':
 			for key in keysToSave:
 				if key in sheet:
+					if key=="avg":
+						avgLst.append([course, sheet[key]])
 					outDic[course][key]=sheet[key]
 			if 'passpercent' in sheet:
 
@@ -117,6 +120,7 @@ normWork = normalizeLst(scoringLst['workscore'], 'workscore')
 
 #Lazying
 normPP=normalizeLst(ppLst, 'pp')
+normalizeLst(avgLst, "avgp")
 
 scoringLst['lazyscore']=[]
 for course, ppPerc  in normPP.iteritems():
