@@ -8,4 +8,4 @@ The following is an explanation of how the values was calculated
   * Workload percentile: Ranked the same way as "Course rating percentile" based on the question "5 point er normeret til 9t./uge (45 t./uge i treugers-perioden). Jeg mener, at min arbejdsindsats i kurset er [Meget mindre..Meget større] / 5 points are allocated to 9h./week (45 h./week in the 3-week period). I think my workload in the course is [Much less..Much bigger"
 
 ##Data gathering and analysis
-Data was gathered using a Python script that scraped DTU's coursebase and formatted so that the extension can use it.
+Data was gathered using a Python script that scraped DTU's coursebase and formatted it so that the extension can use it.
