@@ -1,13 +1,24 @@
 {
-"name":"Inject DOM",
-"description":"http://stackoverflow.com/questions/14068879",
-"version":"1",
-"manifest_version":2,
-"content_scripts": [
-    {
-      "matches": ["http://kurser.dtu.dk/course/*", "http://www.vask-rul-rens-service.dk/*"],
-      "js": ["jquery.js", "db/data.js", "contentscript.js" ]
-    }
-  ],
-"web_accessible_resources": ["db/data.js", "data.js", "script.js"]
+	"name":"DTU Course Analyzer",
+	"description":"Analyzes and scores courses on kurser.dtu.dk/xxxxx",
+	"version":"1",
+	"manifest_version":2,
+	"icons": {
+			"16": "icon16.png",
+			"48": "icon48.png",
+			"128": "icon128.png"
+		},
+
+	"content_scripts": [
+	    {
+	      "matches": ["http://kurser.dtu.dk/course/*", "https://kurser.dtu.dk/course/*"],
+	      "js": ["jquery.js", "contentscript.js"]
+	    }
+	],
+	
+	"web_accessible_resources": ["db/data.js", "contentscript.js"],
+
+	"background": {
+	    "scripts": ["db/data.js", "background.js"]
+	}
 }
