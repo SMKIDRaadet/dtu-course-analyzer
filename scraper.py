@@ -99,29 +99,32 @@ for i, course in enumerate(courses):
     if reviews != "":
         for review in reviews:
             printlog("Review found: " + review)
-            resp = gethtml(review)
-            if resp.getcode()==200:
-                content = resp.read()
-                content = " ".join(content.split())
-                content = content.split('FinalEvaluation_Result_QuestionPositionColumn"><b>', 1)[1]
-                participants = int(extractstr('QuestionPositionColumn"><b>', '</b></td><td>har besvaret', content))
-                printlog("Review participants:" + str(participants))
-                if participants >= 5 :
-                    lst= content.split('FinalEvaluation_Result_AnswerCountColumn">')
-                    lst.pop(0)
+            try:
+                resp = gethtml(review)
+                if resp.getcode()==200:
+                    content = resp.read()
+                    content = " ".join(content.split())
+                    content = content.split('FinalEvaluation_Result_QuestionPositionColumn"><b>', 1)[1]
+                    participants = int(extractstr('QuestionPositionColumn"><b>', '</b></td><td>har besvaret', content))
+                    printlog("Review participants:" + str(participants))
+                    if participants >= 5 :
+                        lst= content.split('FinalEvaluation_Result_AnswerCountColumn">')
+                        lst.pop(0)
 
-                    if len(lst) == 43:
-                        courseDic[course]["review"] = {}
+                        if len(lst) == 43:
+                            courseDic[course]["review"] = {}
 
-                        courseDic[course]["review"]["participants"] = participants
-                        for j, ls in enumerate(lst):
-                            reviewval=int(extractstr('', '<', ls))
-                            courseDic[course]["review"]['A' + str(j)] = int(extractstr('', '<', ls))  
-                        break
+                            courseDic[course]["review"]["participants"] = participants
+                            for j, ls in enumerate(lst):
+                                reviewval=int(extractstr('', '<', ls))
+                                courseDic[course]["review"]['A' + str(j)] = int(extractstr('', '<', ls))  
+                            break
+                        else:
+                            printlog("Error: Unexpected length of review value list")
                     else:
-                        printlog("Error: Unexpected length of review value list")
-                else:
-                    printlog("Not enough review participants")
+                        printlog("Not enough review participants")
+            except:
+                printlog("Error review")
     else:
         printlog("Warning: Cannot format review overview")
 
@@ -131,52 +134,55 @@ for i, course in enumerate(courses):
             printlog(exam)
             if (exam != ''):
                 printlog("Exam found: " + exam)
-                resp = gethtml(exam)
-                if resp.getcode()==200:
-                    content = resp.read()
-                    content = " ".join(content.split())
-                    content = content.split('Fremm&#248;dte </td> <td', 1)[1]
-                    found = extractstr('> ', ' </td>', content)
-                    if (found != ''):
-                        printlog("Exam participants:" + found)
-                        participants=int(found);
-                        if participants >= 5:
-                            #exp_dict(course)
-                            #grades_given = []
-                            courseDic[course]["grades"] = {}
-                            tmpgradeslist=[]
+                try:
+                    resp = gethtml(exam)
+                    if resp.getcode()==200:
+                        content = resp.read()
+                        content = " ".join(content.split())
+                        content = content.split('Fremm&#248;dte </td> <td', 1)[1]
+                        found = extractstr('> ', ' </td>', content)
+                        if (found != ''):
+                            printlog("Exam participants:" + found)
+                            participants=int(found);
+                            if participants >= 5:
+                                #exp_dict(course)
+                                #grades_given = []
+                                courseDic[course]["grades"] = {}
+                                tmpgradeslist=[]
 
-                            for i, grade in enumerate(grades):
-                                nppl = extractstr(grade + ' </td> <td style="text-align: center"> ', ' </td> <td style="vertical-align', content)
-                                if (nppl == ''):
-                                    nppl=0
-                                    #printlog("Warning: No entry for " + grade)
-                                #print 'courseDic['+str(course)+']["grades"]['+gradesfields[i]+']='+str(nppl)
-                                courseDic[course]["grades"][gradesfields[i]]=int(nppl)
-                                printlog(grade+": " + str(nppl))
-                            
-                            courseDic[course]["grades"]["participants"] = participants
-                            try:
-                                avg = content.join(content.split())
-                                avg = avg.split('Eksamensgennemsnit', 1)[1]
-                                avg = avg.split('Efter 7-',1)[0]
-                                avg = extractstr('<td>',' \(', avg).replace(',', '.')
-                                avg = float(avg)
-                                courseDic[course]["grades"]["avg"] = avg
-                            except:
-                                printlog("No avg found")
+                                for i, grade in enumerate(grades):
+                                    nppl = extractstr(grade + ' </td> <td style="text-align: center"> ', ' </td> <td style="vertical-align', content)
+                                    if (nppl == ''):
+                                        nppl=0
+                                        #printlog("Warning: No entry for " + grade)
+                                    #print 'courseDic['+str(course)+']["grades"]['+gradesfields[i]+']='+str(nppl)
+                                    courseDic[course]["grades"][gradesfields[i]]=int(nppl)
+                                    printlog(grade+": " + str(nppl))
+                                
+                                courseDic[course]["grades"]["participants"] = participants
+                                try:
+                                    avg = content.join(content.split())
+                                    avg = avg.split('Eksamensgennemsnit', 1)[1]
+                                    avg = avg.split('Efter 7-',1)[0]
+                                    avg = extractstr('<td>',' \(', avg).replace(',', '.')
+                                    avg = float(avg)
+                                    courseDic[course]["grades"]["avg"] = avg
+                                except:
+                                    printlog("No avg found")
 
-                            try:
-                                passpercent = content.replace(" ", "")
-                                passpercent = passpercent.split("afdetilmeldte,", 1)[1]
-                                passpercent = float(passpercent.split("%afdefremm", 1)[0].replace(',', '.'))
-                                courseDic[course]["grades"]["passpercent"] = passpercent
-                            except:
-                                printlog("No passpercent found")
+                                try:
+                                    passpercent = content.replace(" ", "")
+                                    passpercent = passpercent.split("afdetilmeldte,", 1)[1]
+                                    passpercent = float(passpercent.split("%afdefremm", 1)[0].replace(',', '.'))
+                                    courseDic[course]["grades"]["passpercent"] = passpercent
+                                except:
+                                    printlog("No passpercent found")
 
-                            break
-                        else:
-                            printlog("Not enough exam participants")
+                                break
+                            else:
+                                printlog("Not enough exam participants")
+                except:
+                    printlog("Error exam")
             else:
                 printlog("Error with exam: " + exam)
     else:
