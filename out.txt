@@ -1,21 +1,27 @@
-Analyzing course:12811 (0/346)
-Review found: https://evaluering.dtu.dk/kursus/12811/120103
-Review participants:0
-Not enough review participants
-Review found: https://evaluering.dtu.dk/kursus/12811/88225
-Review participants:1
-Not enough review participants
-http://karakterer.dtu.dk/Histogram/1/12811/Summer-2016
-Exam found: http://karakterer.dtu.dk/Histogram/1/12811/Summer-2016
-Exam participants:4
-Not enough exam participants
-http://karakterer.dtu.dk/Histogram/1/12811/Summer-2015
-Exam found: http://karakterer.dtu.dk/Histogram/1/12811/Summer-2015
-Exam participants:2
-Not enough exam participants
-
-Analyzing course:00000 (1/346)
+Analyzing course:00000 (0/345)
 Warning: Cannot format review overview
 Warning: Cannot format exam overview
 
-Analyzing course:26027 (2/346)
+Analyzing course:26027 (1/345)
+Review found: https://evaluering.dtu.dk/kursus/26027/110606
+Review participants:89
+http://karakterer.dtu.dk/Histogram/1/26027/Winter-2016
+Exam found: http://karakterer.dtu.dk/Histogram/1/26027/Winter-2016
+Exam participants:1
+Not enough exam participants
+http://karakterer.dtu.dk/Histogram/1/26027/Summer-2016
+Exam found: http://karakterer.dtu.dk/Histogram/1/26027/Summer-2016
+Exam participants:282
+Ej m&#248;dt: 51
+Syg: 1
+Best&#229;et: 0
+Ikke best&#229;et: 0
+-3: 23
+00: 47
+02: 36
+4: 58
+7: 44
+10: 38
+12: 36
+
+Analyzing course:01005 (2/345)
