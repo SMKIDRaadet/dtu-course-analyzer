@@ -1,7 +1,7 @@
 # DTU Course Analyzer
 dtu.course.analyzer@gmail.com
 ##Chrome extension
-The following is an explanation of how the values was calculated
+The following is an explanation of how the values were calculated
   * Average grade
   * Average grade percentile: All courses are ranked based on average grade. The [course with the lowest average](http://karakterer.dtu.dk/Histogram/1/11343/Summer-2016) gets 0% and [the course with the highest average](http://karakterer.dtu.dk/Histogram/1/11463/Winter-2015) gets 100%.
   * Percent passed: The ratio of people who **attended** the exam that passed.
