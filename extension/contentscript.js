@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 });
 
-outputArr = [ ["Average grade", "avg", ""], ["Average grade percentile", "avgp", "%"], ["Percent passed", "passpercent", "%"], ["Course rating percentile", "qualityscore", "%"], ["Workload percentile", "workscore", "%"], ["Lazy score percentile", "lazyscore", "%"]]
+outputArr = [ ["Average grade", "avg", ""], ["Average grade percentile", "avgp", "%"], ["Percent passed", "passpercent", "%"], ["Course rating percentile", "qualityscore", "%"], ["Workload percentile", "workload", "%"], ["Lazyscore percentile 🍺", "lazyscore", "%"]]
 function presentData(data){
 	addElement('<hr>',1);
 	addElement('<table><tbody id="DTU-Course-Analyzer"></tbody></table>',2);

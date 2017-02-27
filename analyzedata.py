@@ -1,169 +1,120 @@
 import json
-import re
-from bs4 import BeautifulSoup
-import pprint
-import pickle
-import collections
 import sys
-import operator
+import pprint
 from Prepender import *
 
-pp = pprint.PrettyPrinter(indent=4)
+pp = pprint.PrettyPrinter(indent=2)
 
 
-def RepresentsInt(s):
-    try: 
-        int(s)
-        return True
-    except ValueError:
-        return False
+with open('coursedic.json') as file:
+    courseDic = json.load(file)
 
-f = open('courseDic.txt', 'rb')
-courseDic = pickle.load(f)
-f.close()
+db = {}
+grades = ["-3", "00", "02", "4", "7", "10", "12"]
 
+pass_percentages = []
+workloads = []
+qualityscores = []
+avg = []
 
-tmp=len(courseDic)
-scoringLst={}
-scoringLst['quality']=[]
-scoringLst['workscore']=[]
-keysToRemove=[]
+def calcScore(dic):
+    score = 0
+    total_votes = 0
+    for id, votes in dic.items():
+        if id != "question":
+            score += (int(id)) * int(votes)
+            total_votes += int(votes)
+    return score / total_votes
 
-tmpc=0
+for courseN, course in courseDic.items():
+    print("Course: "+courseN)
+    db[courseN]={}
+    db_sheet = db[courseN]
+    for categoryN, sheets in course.items():
 
-def ScoreQ(lst, index, key, course):
-	try: 
-		global scoringLst
-		global tmpc
-		tmpc+=1
-		A_lst=['A'+str(i) for i in range(index,index+5)]
-		ex_lst=[lst[k] for k in A_lst if k in lst]
-		#print "scoring " + course
-		n=0
-		for val in ex_lst:
-			n+=val
-		if n>-5:		
-			score = 0
-			for i, val in enumerate(ex_lst):
-				score += val * (len(ex_lst) - i - 1)
-			score = float(score)/float(n)
-		else:
-			return False
-		scoringLst[key].append([course, score])
+        sheet = sheets[0]
+        if (len(sheets) >= 2):
+            if (sheets[1]["participants"] > sheets[0]["participants"] * 2 or sheets[0]["participants"] < 5):
+                sheet = sheets[1]
 
-		return score
-	except ZeroDivisionError:
-		print "Division by zero, omitting " + key + " for " + course
-		return False
+        if (sheet["participants"] < 5):
+            continue
 
+        if categoryN == "grades":
+            #pp.pprint(category)
+            db_sheet["passpercent"] = sheet["pass_percentage"]
+            try:
+                db_sheet["avg"] = sheet["avg"]
+                avg.append([courseN, sheet["avg"]])
+            except Exception:
+                pass
+            #print(sheet["pass_percentage"])
+            pass_percentages.append([courseN, sheet["pass_percentage"]])
 
-ppLst=[]
-outDic={}
-avgLst=[]
+            db_sheet["grades"] = {}
+            try:
+                for grade in grades:
+                    db_sheet["grades"][grade] = sheet[grade]
+                    #print(grade,sheet[grade])
+            except Exception:
+                pass
 
-keysToSave=['avg', 'passpercent']
-for course, categorydb in courseDic.iteritems():
-	print course
-	hasKeys=0
-	if 'review' in categorydb:
-			print 'Review found'
-	if 'grades' in categorydb:
-			print 'Grades found'
-	for category, sheet in categorydb.iteritems():
-		outDic[course]={}
-		hasKeys=1
+        if categoryN == "reviews":
+            workloads.append([courseN, calcScore(sheet["1.6"])])
+            qualityscores.append([courseN, calcScore(sheet["1.8"])])
 
-		
-		if category=='review':
-			quality = ScoreQ(sheet, 35, 'quality', course)
-			workscore = ScoreQ(sheet, 25, 'workscore', course)
-			#print 'quality: ' + str(quality)
-			#print 'workscore: ' + str(workscore)
-		if category=='grades':
-			for key in keysToSave:
-				if key in sheet:
-					if key=="avg":
-						avgLst.append([course, sheet[key]])
-					outDic[course][key]=sheet[key]
-			if 'passpercent' in sheet:
+def insertPercentile(lst, tag):
+    global db
+    lst.sort(key=lambda sublist: sublist[0], reverse=True)
+    lst.sort(key=lambda sublist: sublist[1])
 
-				ppLst.append([course, sheet['passpercent']])
-				#ppDic[sheet['passpercent']] = course
-			else: 
-				print "no passpercent for " + course
-	if hasKeys==0:
-		print "Flagging " + course + " for removal"
-		keysToRemove.append(course)
+    prev_val = -1
+    index=-1
+    for i, course in enumerate(lst):
+        val = course[1]
+        if val > prev_val:
+            index+=1
+        course.append(index)
 
-	print 
-for k in keysToRemove: del courseDic[k]
+        prev_val = val
+        #pass_percentages[1][2] = 1337
+
+    for i, course in enumerate(lst):
+        course.append(round(100 * course[2] / (index), 1))
+        db[course[0]][tag]=course[3]
+    return lst
+#pp.pprint(db)
+insertPercentile(pass_percentages, "pp")
+insertPercentile(avg, "avgp")
+insertPercentile(qualityscores, "qualityscore")
+insertPercentile(workloads, "workload")
 
 
 
-def normalizeLst(lst, name, insert=True):
-	new_list = list(lst)
-	new_list.sort(key=lambda sublist: sublist[0], reverse=True)
-	new_list.sort(key=lambda sublist: sublist[1])
-	counter = 0
-	normDic={}
-	for i, val in enumerate(new_list): 
-		perc = round( float(i)/float(len(new_list)-1) * 100, 1)
-		if insert:
-			outDic[val[0]][name] = perc
-		normDic[val[0]]=perc
-		#print course + ": " + str(perc)
-	return normDic
-	#print str(course) + ": " + avg
-normalizeLst(scoringLst['quality'], 'qualityscore')
-pp.pprint(scoringLst['workscore'])
-normWork = normalizeLst(scoringLst['workscore'], 'workscore')
 
-#Lazying
-normPP=normalizeLst(ppLst, 'pp')
-normalizeLst(avgLst, "avgp")
+lazyscores = []
+for courseN, course in db.items():
+    try:
+        lazyscores.append([ courseN, course['pp'] + 100 - course['workload'] ])
+    except Exception:
+        pass
 
-scoringLst['lazyscore']=[]
-for course, ppPerc  in normPP.iteritems():
-	try:
-		lazyPerc=(float(ppPerc) + float(normWork[course]))/float(2)
-		scoringLst['lazyscore'].append([course, lazyPerc])
-	except: 
-		print "Warning: No avg for " + str(course) + " maybe no avg and/or work found for course"
-pp.pprint(scoringLst['lazyscore'])
-normLazy = normalizeLst(scoringLst['lazyscore'], 'lazyscore')
+#pp.pprint(lazyscores)
 
-#pp.pprint(outDic)
-f = open('courseDicAnalyzed.txt', 'wb')
-pickle.dump(courseDic, f)
-f.close()
+insertPercentile(lazyscores, "lazyscore")
+
+#print("a:"+str(pass_percentages[1][1]))
+
+empty_keys = [k for k,v in db.items() if not v]
+for k in empty_keys:
+    del db[k]
+
+pp.pprint(db)
+
 
 extFilename='extension/db/data.js'
 with open(extFilename, 'w') as outfile:
-    json.dump(outDic, outfile)
+    json.dump(db, outfile)
 
 with PrependToFile(extFilename) as f:
-	f.write_line('var data = ')
-
-
-pp.pprint(outDic)
-
-html=''
-headNames=[ ["avg", "Average Grade"], ["avgp", "Average Grade Percentile"], ["passpercent", "Percent Passed"], ["lazyscore", "Lazy Score Percentile"], ["qualityscore", "Qualityscore"] ]
-html+='<table id="table_id" class="display"><thead><tr>'
-html+='<th>Course</th>'
-for header in headNames:
-	html+='<th>'+header[1]+'</th>'
-html+='</tr></thead><tbody>'
-
-for course, data in outDic.iteritems():
-	html+='<tr>'
-	html+='<td>' + course + '</td>'
-	for header in headNames:
-		key=header[0]
-		val=""
-		if key in data:
-			val=str(data[key])
-		html+='<td>' + val + '</td>'
-	html+='</tr>'
-html+='</tbody></table>'
-print html
+    f.write_line('var data = ')
