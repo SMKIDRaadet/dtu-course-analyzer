@@ -152,7 +152,7 @@ class Course(object):
             html = respObj(url)
             if html:
                 soup = BeautifulSoup(html, 'html.parser')
-                obj = soup.find_all('table')[-1].find_all('tr')
+                obj = soup.find_all('table')[2].find_all('tr')
 
                 participants = int(soup.findAll("td", { "class" : "FinalEvaluation_Result_QuestionPositionColumn" })[1].text)
                 dic["participants"]=participants
@@ -167,6 +167,7 @@ class Course(object):
                         value = removeWhitespace(obj[i].find_all('td')[2].text)
                         dic[name][qCounter] = value
                         qCounter += 1
+
             return dic
         except KeyError:
             return False
@@ -205,7 +206,7 @@ class Course(object):
 
 courseDic = {}
 
-for i, courseN in enumerate(courses[0:20]):
+for i, courseN in enumerate(courses):
     print("Course: "+courseN)
     course = Course(courseN)
     overviewResp = respObj("http://kurser.dtu.dk/course/" + courseN + "/info")
