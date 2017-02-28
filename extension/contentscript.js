@@ -10,16 +10,21 @@ course = window.location.href.split("/course/")[1]
 if( !(isNumeric(course[course.length -1])) ){
 		course=course.slice(0,-1)
 }
+
+
 //console.log("course=" + course)
 
-if(course.length==5 && isNumeric(course)){
-	if(matchRuleShort(window.location.href, "http*://kurser.dtu.dk/course/*")){
+//console.log("Checking")
+if(course.length==5){
+	if(matchRuleShort(window.location.href, "http*://kurser.dtu.dk/*course/*")){
 		chrome.extension.sendRequest({getInfo: course});
+		//console.log("Passed regex")
 
 	} else{
 		//console.log("Failed regex")
 	}
 } else{
+	//console.log("Wrong length")
 	//console.log("Wrong length of endStr or not numeric")
 }
 
@@ -32,9 +37,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 		//console.log(getHTML(request[course]))
 	} else if(request[course]==false){
-		console.log("Wrong or no information received from db")
+		console.log("DTU COURSE ANALYZER: Wrong or no information received from db")
 	}
-	console.log("received msg")
 	presentData(request[course])
 
 });
