@@ -33,6 +33,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	sendResponse({pong: true}); return; 
 	}*/
 	if(request[course]){
+		//console.log(request[course])
+		presentData(request[course])
+		//console.log(getHTML(request[course]))
 	} else if(request[course]==false){
 		console.log("DTU COURSE ANALYZER: Wrong or no information received from db")
 	}
@@ -44,7 +47,7 @@ outputArr = [ ["Average grade", "avg", ""], ["Average grade percentile", "avgp",
 function presentData(data){
 	addElement('<hr>',1);
 	addElement('<table><tbody id="DTU-Course-Analyzer"></tbody></table>',2);
-	console.log(data)
+	//console.log(data)
 	addRow("—DTU Course Analyzer—", "");
 
 	if(data){
@@ -56,7 +59,7 @@ function presentData(data){
 			}
 			val=Math.round(val * 10) / 10
 			if (typeof val != 'undefined' && !isNaN(val)){
-				console.log(val)
+				//console.log(val)
 				addRow(outputArr[i][0], val + outputArr[i][2])
 			}
 		}
