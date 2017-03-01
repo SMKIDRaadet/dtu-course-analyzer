@@ -9,13 +9,24 @@ $(document).ready( function() {
 } );
 
 
-jQuery.fn.dataTableExt.oSort['numWithNull-asc'] = function(a,b) {
-var x = parseInt(a);
-var y = parseInt(b);
-return ((isNaN(x) || x < y) ? -1 : ((isNaN(y) || x > y) ? 1 : 0));
-};
-jQuery.fn.dataTableExt.oSort['numWithNull-desc'] = function(a,b) {
-var x = parseInt(a);
-var y = parseInt(b);
-return ((isNaN(x) || x < y) ? 1 : ((isNaN(y) || x > y) ? -1 : 0));
-};
+jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+    "non-empty-asc": function (str1, str2) {
+        if(str1 == "")
+            return 1;
+        if(str2 == "")
+            return -1;
+        str1 = parseFloat(str1)
+        str2 = parseFloat(str2)
+        return ((str1 < str2) ? -1 : ((str1 > str2) ? 1 : 0));
+    },
+ 
+    "non-empty-desc": function (str1, str2) {
+        if(str1 == "")
+            return 1;
+        if(str2 == "")
+            return -1;
+        str1 = parseFloat(str1)
+        str2 = parseFloat(str2)
+        return ((str1 < str2) ? 1 : ((str1 > str2) ? -1 : 0));
+    }
+} );

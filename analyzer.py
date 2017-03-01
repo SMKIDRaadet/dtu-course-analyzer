@@ -170,7 +170,7 @@ file.close()
 
 searchable_columns = '{ "bSearchable": true, "aTargets": [ 0 ] }'
 for i in range(0, len(headNames)):
-	searchable_columns += ', { "bSearchable": false, "aTargets": [ ' + str(i+1) + ' ] }'
+	searchable_columns += ', { type: "non-empty", "bSearchable": false, "aTargets": [ ' + str(i+1) + ' ] }'
 
 html = html.replace('$searchable_columns', searchable_columns)
 

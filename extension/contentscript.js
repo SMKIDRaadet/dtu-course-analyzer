@@ -33,13 +33,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	sendResponse({pong: true}); return; 
 	}*/
 	if(request[course]){
-		//console.log(request[course])
-
-		//console.log(getHTML(request[course]))
 	} else if(request[course]==false){
 		console.log("DTU COURSE ANALYZER: Wrong or no information received from db")
 	}
-	presentData(request[course])
+	
 
 });
 
