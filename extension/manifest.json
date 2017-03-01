@@ -12,14 +12,15 @@
 	"content_scripts": [
 	    {
 	      "matches": ["http://kurser.dtu.dk/course/*", "https://kurser.dtu.dk/course/*"],
-	      "js": ["jquery.js", "contentscript.js"]
+	      "css": ["css/jquery.dataTables.css"],
+	      "js": ["js/jquery.js", "contentscript.js"]
 	    }
 	],
 	
 	"web_accessible_resources": ["db/data.js", "contentscript.js"],
 
 	"background": {
-	    "scripts": ["js/jquery-1.12.4.js", "js/jquery.dataTables.min.js","/db/data.js", "background.js"]
+	    "scripts": ["js/jquery-1.12.4.js", "/db/data.js", "background.js"]
 	},
 
 	"browser_action": {

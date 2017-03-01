@@ -58,7 +58,8 @@ function presentData(data){
 				val=100-val
 			}
 			val=Math.round(val * 10) / 10
-			if (typeof val != 'undefined'){
+			if (typeof val != 'undefined' && !isNaN(val)){
+				console.log(val)
 				addRow(outputArr[i][0], val + outputArr[i][2])
 			}
 		}
