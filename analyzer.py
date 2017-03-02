@@ -17,17 +17,14 @@ qualityscores = []
 avg = []
 
 
-def calcScore(dic, reversed):
+def calcScore(dic):
     score = 0
     total_votes = 0
 
-    #reversed = False
     for id, votes in dic.items():
         if id != "question":
-            if reversed:
-                score += (4-int(id)) * int(votes)
-            else:
-                score += (int(id)) * int(votes)
+
+            score += (5-int(id)) * int(votes)
 
             total_votes += int(votes)
     return score / total_votes
@@ -70,8 +67,8 @@ for courseN, course in courseDic.items():
                 pass
 
         if categoryN == "reviews":
-            workloads.append([courseN, calcScore(sheet["1.6"], False)])
-            qualityscores.append([courseN, calcScore(sheet["1.8"], True)])
+            workloads.append([courseN, calcScore(sheet["1.6"])])
+            qualityscores.append([courseN, calcScore(sheet["1.8"])])
 
 
 def insertPercentile(lst, tag):
@@ -105,7 +102,7 @@ insertPercentile(workloads, "workload")
 lazyscores = []
 for courseN, course in db.items():
     try:
-        lazyscores.append([courseN, course['pp'] + 100 - course['workload']])
+        lazyscores.append([courseN, course['pp'] + course['workload']])
     except Exception:
         pass
 
@@ -170,7 +167,11 @@ file.close()
 
 searchable_columns = '{ "bSearchable": true, "aTargets": [ 0 ] }'
 for i in range(0, len(headNames)):
-	searchable_columns += ', { type: "non-empty", "bSearchable": false, "aTargets": [ ' + str(i+1) + ' ] }'
+    if i > 0:
+        sort_str = '"asSorting": [ "desc", "asc" ], "bSearchable": false, '
+    else:
+        sort_str = '"bSearchable": true,'
+    searchable_columns += ', { type: "non-empty", ' + sort_str + '"aTargets": [ ' + str(i+1) + ' ] }'
 
 html = html.replace('$searchable_columns', searchable_columns)
 

@@ -18,6 +18,10 @@ chrome.extension.onRequest.addListener(function(request, sender) {
 
 	
 chrome.browserAction.onClicked.addListener(function(tab) {
-   var newURL = "http://www.youtube.com/watch?v=oHg5SJYRHA0";
-    chrome.tabs.create({ url: chrome.extension.getURL('db.html') });
+	chrome.tabs.create({ url: chrome.extension.getURL('db.html') });
 });
+function getColor(value){
+    //value from 0 to 1
+    var hue=((1-value)*120).toString(10);
+    return ["hsl(",hue,",100%,50%)"].join("");
+}

@@ -43,7 +43,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 });
 
-outputArr = [ ["Average grade", "avg", ""], ["Average grade percentile", "avgp", "%"], ["Percent passed", "passpercent", "%"], ["Course rating percentile", "qualityscore", "%"], ["Workload percentile", "workload", "%"], ["Lazyscore percentile 🍺", "lazyscore", "%"]]
+outputArr = [ ["Average grade", "avg", "", 12], ["Average grade percentile", "avgp", "%", 100], ["Percent passed", "passpercent", "%", 100], ["Course rating percentile", "qualityscore", "%", 100], ["Workload percentile", "workload", "%", 100], ["Lazyscore percentile 🍺", "lazyscore", "%", 100]]
 function presentData(data){
 	addElement('<hr>',1);
 	addElement('<table><tbody id="DTU-Course-Analyzer"></tbody></table>',2);
@@ -54,13 +54,11 @@ function presentData(data){
 		for(i = 0; i < outputArr.length; i++){
 			key=outputArr[i][1]
 			val=data[key]
-			if (key=="workscore"){
-				val=100-val
-			}
+
 			val=Math.round(val * 10) / 10
 			if (typeof val != 'undefined' && !isNaN(val)){
 				//console.log(val)
-				addRow(outputArr[i][0], val + outputArr[i][2])
+				addRow(outputArr[i][0], val, outputArr[i][2], true, outputArr[i][3])
 			}
 		}
 	} else {
@@ -73,6 +71,20 @@ function addElement(html, index){
 	$('.box.information').children(':eq(' + index + ')').after(html)
 }
 
-function addRow(td1, td2){
-	$('#DTU-Course-Analyzer')[0].insertRow(-1).innerHTML = '<tr><td><b>' + td1 + '</b></td><td>' + td2 + '</td></tr>';
+var tdIndex = 0;
+function addRow(td1, td2, unit="", colored = false, maxValue = 1){
+	id = 'dca-td-' + tdIndex
+	$('#DTU-Course-Analyzer')[0].insertRow(-1).innerHTML = '<tr><td><b>' + td1 + '</b></td><td><span id=' + id + '>' + td2 + unit + '</span></td></tr>';
+	if(colored){
+		elem=document.getElementById(id)
+		elem.style.backgroundColor=getColor(1 - td2/maxValue);
+		console.log(td2, maxValue,elem)
+	}
+	tdIndex++
+}
+
+function getColor(value){
+    //value from 0 to 1
+    var hue=((1-value)*120).toString(10);
+    return ["hsl(",hue,",100%,50%)"].join("");
 }
