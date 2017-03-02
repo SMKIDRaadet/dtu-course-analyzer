@@ -43,12 +43,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 });
 
-outputArr = [ ["Average grade", "avg", "", 12], ["Average grade percentile", "avgp", "%", 100], ["Percent passed", "passpercent", "%", 100], ["Course rating percentile", "qualityscore", "%", 100], ["Workload percentile", "workload", "%", 100], ["Lazyscore percentile 🍺", "lazyscore", "%", 100]]
+outputArr = [ ["Average grade", "avg", "", 12], ["Average grade percentile", "avgp", "%", 100], ["Percent passed", "passpercent", "%", 100], ["Course rating percentile", "qualityscore", "%", 100], ["Workscore percentile", "workload", "%", 100], ["Lazyscore percentile 🍺", "lazyscore", "%", 100]]
 function presentData(data){
 	addElement('<hr>',1);
 	addElement('<table><tbody id="DTU-Course-Analyzer"></tbody></table>',2);
 	//console.log(data)
-	addRow("—DTU Course Analyzer—", "");
+	addRow("—DTU Course Analyzer—");
 
 	if(data){
 		for(i = 0; i < outputArr.length; i++){
@@ -62,9 +62,9 @@ function presentData(data){
 			}
 		}
 	} else {
-		addRow("No data found for this course", "")
+		addRow("No data found for this course")
 	}
-	addRow("<a href='https://github.com/OskarNS/dtu-course-analyzer/blob/master/README.md' target='_blank'><label>What is this?</label</a>", "")
+	addRow("<a href='https://github.com/OskarNS/dtu-course-analyzer/blob/master/README.md' target='_blank'><label>What is this?</label</a>")
 }
 
 function addElement(html, index){
@@ -72,19 +72,21 @@ function addElement(html, index){
 }
 
 var tdIndex = 0;
-function addRow(td1, td2, unit="", colored = false, maxValue = 1){
+function addRow(td1, td2="", unit="", colored = false, maxValue = 1){
 	id = 'dca-td-' + tdIndex
 	$('#DTU-Course-Analyzer')[0].insertRow(-1).innerHTML = '<tr><td><b>' + td1 + '</b></td><td><span id=' + id + '>' + td2 + unit + '</span></td></tr>';
 	if(colored){
 		elem=document.getElementById(id)
 		elem.style.backgroundColor=getColor(1 - td2/maxValue);
-		console.log(td2, maxValue,elem)
 	}
-	tdIndex++
+	tdIndex++;
 }
 
 function getColor(value){
     //value from 0 to 1
+    if(value>1){
+    	value=1;
+    }
     var hue=((1-value)*120).toString(10);
     return ["hsl(",hue,",100%,50%)"].join("");
 }
