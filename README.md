@@ -1,7 +1,7 @@
 # DTU Course Analyzer
 dtu.course.analyzer@gmail.com
 ##Chrome extension
-The following is an explanation of how the values were calculated
+The following is an explanation of how the values were calculated (higher is always better)
   * Average grade
   * Average grade percentile: All courses are ranked against eachother based on average grade. 
   * Percent passed: The ratio of people who **attended** the exam that passed.
