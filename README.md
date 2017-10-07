@@ -1,7 +1,6 @@
-# DTU Course Analyzer
-dtu.course.analyzer@gmail.com
+# DTU Course Analyze
 
-##Chrome extension
+## Chrome extension
 The following is an explanation of how the values were calculated (higher is always better)
   * Average grade
   * Average grade percentile: All courses are ranked against eachother based on average grade. 
