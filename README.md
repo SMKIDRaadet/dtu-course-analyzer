@@ -1,5 +1,8 @@
 # DTU Course Analyze
 
+## Installation
+https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
+
 ## Chrome extension
 The following is an explanation of how the values were calculated (higher is always better)
   * Average grade
