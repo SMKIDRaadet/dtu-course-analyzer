@@ -1,5 +1,6 @@
 # DTU Course Analyzer
 dtu.course.analyzer@gmail.com
+
 ##Chrome extension
 The following is an explanation of how the values were calculated (higher is always better)
   * Average grade
