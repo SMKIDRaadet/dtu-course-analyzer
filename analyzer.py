@@ -5,7 +5,7 @@ from Prepender import *
 
 pp = pprint.PrettyPrinter(indent=2)
 
-with open('coursedic_with_courseN.json') as file:
+with open('coursedic.json') as file:
     courseDic = json.load(file)
 
 db = {}
