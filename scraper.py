@@ -152,21 +152,19 @@ class Course(object):
             html = respObj(url)
             if html:
                 soup = BeautifulSoup(html, 'html.parser')
-                obj = soup.find_all('table')[2].find_all('tr')
+                containers = soup.findAll("div", {"class": "ResultCourseModelWrapper"})#[2].find_all('tr')
 
-                participants = int(soup.findAll("td", { "class" : "FinalEvaluation_Result_QuestionPositionColumn" })[1].text)
-                dic["participants"]=participants
-                for i in range(1, len(obj)):
-                    if (obj[i]["class"][0] == 'context_subheader'):
-                        qCounter = 0
-                        name = removeWhitespace(obj[i].find_all('td')[0].text)
-                        question = (obj[i].find_all('td')[1].findChildren()[0].text)
-                        dic[name] = {}
-                        dic[name]["question"] = question
-                    else:
-                        value = removeWhitespace(obj[i].find_all('td')[2].text)
-                        dic[name][qCounter] = value
-                        qCounter += 1
+                publicContainer = soup.find("div", {"id": "CourseResultsPublicContainer"})
+                dic["participants"]=int(publicContainer.find("table").findAll("tr")[1].findAll("td")[0].text)
+                dic["timestamp"] = publicContainer.find("h2").text[-3:]
+                for container in containers:
+                    name = container.find("div", {"class": "FinalEvaluation_Result_QuestionPositionColumn"}).text
+                    name = removeWhitespace(name)
+                    dic[name] = {}
+                    dic[name]["question"] = container.find("div", {"class": "FinalEvaluation_QuestionText"}).text
+
+                    for i, row in enumerate(container.findAll("div", {"class": "RowWrapper"})):
+                        dic[name][i] = removeWhitespace(row.find("div", {"class": "FinalEvaluation_Result_AnswerCountColumn"}).find("span").text)
 
             return dic
         except KeyError:
@@ -211,6 +209,7 @@ for i, courseN in enumerate(courses):
         print("Course: "+courseN)
         course = Course(courseN)
         overviewResp = respObj("http://kurser.dtu.dk/course/" + courseN + "/info")
+
         if overviewResp:
             soup = BeautifulSoup(overviewResp, "html.parser")
             links = soup.find_all('a')
@@ -223,13 +222,16 @@ for i, courseN in enumerate(courses):
         crawl = course.gather()
         if(crawl):
             courseDic[courseN] = crawl
+            soup = BeautifulSoup(respObj("http://kurser.dtu.dk/course/" + courseN), "html.parser")
+            courseName = soup.find_all('h2')[0].contents[0].split(" ", 1)[1]
+            courseDic[courseN]["name"] = courseName
+    except KeyboardInterrupt:
+        break
     except Exception:
         printlog("Skipping " + str(courseN))
 
 with open('coursedic.json', 'w') as outfile:
     json.dump(courseDic, outfile)
     outfile.close()
-
-pp.pprint(courseDic)
 
 printlog("Requests sent: " + str(reqC))
