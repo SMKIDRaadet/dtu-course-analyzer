@@ -4,3 +4,7 @@ secret
 secret.pyc
 Prepender.pyc
 extension.zip
+secret.txt
+extension.pem
+__pycache__/
+.idea/
