@@ -11,43 +11,23 @@ if( !(isNumeric(course[course.length -1])) ){
 		course=course.slice(0,-1)
 }
 
-
-//console.log("course=" + course)
-
-//console.log("Checking")
 if(course.length==5){
+	console.log(1);
 	if(matchRuleShort(window.location.href, "http*://kurser.dtu.dk/*course/*")){
-		chrome.extension.sendRequest({getInfo: course});
-		//console.log("Passed regex")
-
-	} else{
-		//console.log("Failed regex")
+		browser.runtime.sendMessage({getInfo: course});
 	}
-} else{
-	//console.log("Wrong length")
-	//console.log("Wrong length of endStr or not numeric")
 }
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	/*if(request.ping) {
-	sendResponse({pong: true}); return; 
-	}*/
+browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if(request[course]){
-		//console.log(request[course])
 		presentData(request[course])
-		//console.log(getHTML(request[course]))
-	} else if(request[course]==false){
-		console.log("DTU COURSE ANALYZER: Wrong or no information received from db")
 	}
-	
-
 });
 
 outputArr = [ ["Average grade", "avg", "", 12], ["Average grade percentile", "avgp", "%", 100], ["Percent passed", "passpercent", "%", 100], ["Course rating percentile", "qualityscore", "%", 100], ["Workscore percentile", "workload", "%", 100], ["Lazyscore percentile 🍺", "lazyscore", "%", 100]]
 function presentData(data){
 	addElement('<hr>',1);
 	addElement('<table><tbody id="DTU-Course-Analyzer"></tbody></table>',2);
-	//console.log(data)
 	addRow("—DTU Course Analyzer—");
 
 	if(data){
@@ -57,7 +37,6 @@ function presentData(data){
 
 			val=Math.round(val * 10) / 10
 			if (typeof val != 'undefined' && !isNaN(val)){
-				//console.log(val)
 				addRow(outputArr[i][0], val, outputArr[i][2], true, outputArr[i][3])
 			}
 		}
