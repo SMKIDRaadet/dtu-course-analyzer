@@ -3,8 +3,8 @@ secret.py
 secret
 secret.pyc
 Prepender.pyc
-extension.zip
+chrome_extension.zip
 secret.txt
-extension.pem
+chrome_extension/extension.pem
 __pycache__/
 .idea/

@@ -1,0 +1,29 @@
+{
+	"name":"DTU Course Analyzer",
+	"description":"Analyzes and scores courses on kurser.dtu.dk/xxxxx",
+	"version":"1.2.2",
+	"manifest_version":2,
+	"icons": {
+			"16": "icon16.png",
+			"48": "icon48.png",
+			"128": "icon128.png"
+		},
+
+	"content_scripts": [
+	    {
+	      "matches": ["http://kurser.dtu.dk/course/*", "https://kurser.dtu.dk/course/*"],
+	      "css": ["css/jquery.dataTables.css"],
+	      "js": ["js/jquery.js", "contentscript.js"]
+	    }
+	],
+	
+	"web_accessible_resources": ["db/data.js", "contentscript.js"],
+
+	"background": {
+	    "scripts": ["js/jquery-1.12.4.js", "/db/data.js", "background.js"]
+	},
+
+	"browser_action": {
+    	"default_icon": "icon128.png"
+  	}
+}
