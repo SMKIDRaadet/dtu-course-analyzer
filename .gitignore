@@ -5,6 +5,6 @@ secret.pyc
 Prepender.pyc
 chrome_extension.zip
 secret.txt
-extension.pem
+chrome_extension/extension.pem
 __pycache__/
 .idea/
