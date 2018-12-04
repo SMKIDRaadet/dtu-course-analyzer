@@ -3,6 +3,10 @@ import sys
 import pprint
 from Prepender import *
 
+if len(sys.argv) != 2:
+    print('usage: ' + sys.argv[0] + ' <extension-folder-name>')
+    sys.exit()
+
 pp = pprint.PrettyPrinter(indent=2)
 
 with open('coursedic.json') as file:
@@ -15,7 +19,6 @@ pass_percentages = []
 workloads = []
 qualityscores = []
 avg = []
-
 
 def calcScore(dic):
     score = 0
@@ -116,7 +119,8 @@ empty_keys = [k for k, v in db.items() if not v]
 for k in empty_keys:
     del db[k]
 
-extFilename = 'extension/db/data.js'
+folder = sys.argv[1]
+extFilename = folder + '/db/data.js'
 with open(extFilename, 'w') as outfile:
     json.dump(db, outfile)
 
@@ -152,7 +156,7 @@ file.close()
 
 content = content.replace('$table', table)
 
-file = open("extension/db.html", 'w')
+file = open(folder + "/db.html", 'w')
 content=file.write(content)
 file.close()
 
@@ -170,6 +174,6 @@ for i in range(0, len(headNames)):
 
 content = content.replace('$searchable_columns', searchable_columns)
 
-file = open("extension/js/init_table.js", 'w')
+file = open(folder + "/js/init_table.js", 'w')
 content=file.write(content)
 file.close()
