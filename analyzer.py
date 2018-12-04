@@ -116,8 +116,6 @@ empty_keys = [k for k, v in db.items() if not v]
 for k in empty_keys:
     del db[k]
 
-pp.pprint(db)
-
 extFilename = 'extension/db/data.js'
 with open(extFilename, 'w') as outfile:
     json.dump(db, outfile)
@@ -149,20 +147,17 @@ table += '</tbody></table>'
 
 
 file = open("templates/db.html", 'r')
-html=file.read()
+content=file.read()
 file.close()
 
-html = html.replace('$table', table)
-
-print(html)
+content = content.replace('$table', table)
 
 file = open("extension/db.html", 'w')
-html=file.write(html)
+content=file.write(content)
 file.close()
 
-
 file = open("templates/init_table.js", 'r')
-html=file.read()
+content=file.read()
 file.close()
 
 searchable_columns = '{ "bSearchable": true, "aTargets": [ 0 ] }'
@@ -173,8 +168,8 @@ for i in range(0, len(headNames)):
         sort_str = '"bSearchable": true,'
     searchable_columns += ', { type: "non-empty", ' + sort_str + '"aTargets": [ ' + str(i+1) + ' ] }'
 
-html = html.replace('$searchable_columns', searchable_columns)
+content = content.replace('$searchable_columns', searchable_columns)
 
 file = open("extension/js/init_table.js", 'w')
-html=file.write(html)
+content=file.write(content)
 file.close()
