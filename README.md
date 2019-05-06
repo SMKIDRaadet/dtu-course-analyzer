@@ -1,4 +1,4 @@
-# DTU Course Analyze
+# DTU Course Analyzer
 
 ## Installation
 https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
