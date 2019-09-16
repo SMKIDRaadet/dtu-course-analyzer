@@ -1,7 +1,7 @@
 {
 	"name":"DTU Course Analyzer",
 	"description":"Analyzes and scores courses on kurser.dtu.dk/xxxxx",
-	"version":"1.2.2",
+	"version":"1.2.3",
 	"manifest_version":2,
 	"icons": {
 			"16": "icon16.png",
@@ -20,7 +20,7 @@
 	"web_accessible_resources": ["db/data.js", "contentscript.js"],
 
 	"background": {
-	    "scripts": ["js/jquery-1.12.4.js", "/db/data.js", "background.js"]
+	    "scripts": ["js/jquery.js", "/db/data.js", "background.js"]
 	},
 
 	"browser_action": {
