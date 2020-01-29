@@ -1,7 +1,5 @@
 # DTU Course Analyzer
 
-Pull requests are very welcome.
-
 ## Installation
 https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
 
