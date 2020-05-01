@@ -127,6 +127,9 @@ with open(extFilename, 'w') as outfile:
 with PrependToFile(extFilename) as f:
     f.write_line('var data = ')
 
+with open('data.json', 'w') as outfile:
+    json.dump(db, outfile)
+
 table = ''
 headNames = [["name", "Name"], ["avg", "Average Grade"], ["avgp", "Average Grade Percentile"], ["passpercent", "Percent Passed"],
              ["qualityscore", "Course Rating"], ["workload", "Workload"], ["lazyscore", "Lazy Score Percentile"]]
