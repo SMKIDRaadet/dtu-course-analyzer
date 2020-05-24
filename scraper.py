@@ -227,7 +227,8 @@ for i, courseN in enumerate(courses):
             courseDic[courseN]["name"] = courseName
     except KeyboardInterrupt:
         break
-    except Exception:
+    except Exception as e:
+        printlog(str(e))
         printlog("Skipping " + str(courseN))
 
 with open('coursedic.json', 'w') as outfile:
