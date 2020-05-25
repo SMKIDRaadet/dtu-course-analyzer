@@ -26,7 +26,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	}
 });
 
-outputArr = [ ["Average grade", "avg", "", 12], ["Average grade percentile", "avgp", "%", 100], ["Percent passed", "passpercent", "%", 100], ["Course rating percentile", "qualityscore", "%", 100], ["Workscore percentile", "workload", "%", 100], ["Lazyscore percentile 🍺", "lazyscore", "%", 100]]
+const defaultColorRange = {minHue: 0, maxHue: 120, startRangeAt: 0};
+
+outputArr = [
+	["Average grade", "avg", "", 12, {minHue: 0, maxHue: 120, startRangeAt: 0.2}],
+	["Average grade percentile", "avgp", "%", 100, defaultColorRange],
+	["Percent passed", "passpercent", "%", 100, {minHue: 0, maxHue: 120, startRangeAt: 0.5}],
+	["Course rating percentile", "qualityscore", "%", 100, defaultColorRange],
+	["Workscore percentile", "workload", "%", 100, defaultColorRange],
+	["Lazyscore percentile 🍺", "lazyscore", "%", 100, defaultColorRange]]
+
 function presentData(data){
 	$('.box.information > table').first().after($('<table/>').append($('<tbody/>', {'id': 'DTU-Course-Analyzer'})));
 	addRow($('<span/>').text('—DTU Course Analyzer—'));
@@ -38,7 +47,7 @@ function presentData(data){
 
 			val=Math.round(val * 10) / 10;
 			if (typeof val != 'undefined' && !isNaN(val)){
-				addRow($('<span/>', {'text': outputArr[i][0]}), val, outputArr[i][2], true, outputArr[i][3]);
+				addRow($('<span/>', {'text': outputArr[i][0]}), val, outputArr[i][2], true, outputArr[i][3], outputArr[i][4]);
 			}
 		}
 	} else {
@@ -49,7 +58,7 @@ function presentData(data){
 
 var tdIndex = 0;
 
-function addRow(td1Elem, td2val="", unitText="", colored = false, maxValue = 1){
+function addRow(td1Elem, td2val="", unitText="", colored = false, maxValue = 1, colorRange = defaultColorRange){
 	id = 'dca-td-' + tdIndex;
 
 	$('#DTU-Course-Analyzer').append(
@@ -65,17 +74,32 @@ function addRow(td1Elem, td2val="", unitText="", colored = false, maxValue = 1){
 	);
 
 	if(colored){
-		elem=document.getElementById(id);
-		elem.style.backgroundColor=getColor(1 - td2val/maxValue);
+		elem = document.getElementById(id);
+		elem.style.backgroundColor = colorRangeToString(td2val/maxValue, colorRange);
 	}
 	tdIndex++;
 }
 
-function getColor(value){
-    //value from 0 to 1
-    if(value>1){
-    	value=1;
-    }
-    var hue=((1-value)*120).toString(10);
-    return ["hsl(",hue,",100%,50%)"].join("");
+/**
+ * Returns the hsl color string for the value using the specified color range.
+ */
+function colorRangeToString(value, colorRange) {
+	const range = colorRange.maxHue - colorRange.minHue;
+
+	// The processed value is the value after it is adjusted so that is offset by colorRange.startRangeAt
+	let processedValue = clamp(value, 0, 1);
+
+	if(colorRange.startRangeAt !== 0) {
+		processedValue = (value - colorRange.startRangeAt) / colorRange.startRangeAt;
+	}
+
+	// The processed value is then scaled by the range, and added to the minimum hue to achieve the final hue value
+	const hueOffset = processedValue * range;
+	const hue = clamp(hueOffset + colorRange.minHue, colorRange.minHue, colorRange.maxHue);
+
+	return `hsl(${hue}, 100%, 50%)`;
+}
+
+function clamp(value, min, max) {
+	return Math.max(min, Math.min(value, max));
 }
