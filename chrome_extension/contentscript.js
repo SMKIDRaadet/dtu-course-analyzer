@@ -90,7 +90,7 @@ function colorRangeToString(value, colorRange) {
 	let processedValue = clamp(value, 0, 1);
 
 	if(colorRange.startRangeAt !== 0) {
-		processedValue = (value - colorRange.startRangeAt) / colorRange.startRangeAt;
+		processedValue = (value - colorRange.startRangeAt) / (1 - colorRange.startRangeAt);
 	}
 
 	// The processed value is then scaled by the range, and added to the minimum hue to achieve the final hue value
