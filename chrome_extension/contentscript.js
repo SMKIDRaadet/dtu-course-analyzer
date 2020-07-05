@@ -1,7 +1,7 @@
 console.log("running!");
 
 course = window.location.href.match(
-  /^http.:\/\/kurser.dtu.dk\/course\/(?:[0-9-]*\/)?([0-9]{5})$/
+  /^http.:\/\/kurser.dtu.dk\/course\/(?:[0-9-]*\/)?([0-9]{5})/
 )[1];
 
 if (course.length == 5) {
