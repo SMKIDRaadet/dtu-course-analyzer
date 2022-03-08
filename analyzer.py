@@ -70,8 +70,11 @@ for courseN, course in courseDic.items():
                 pass
 
         if categoryN == "reviews":
-            workloads.append([courseN, calcScore(sheet["1.6"])])
-            qualityscores.append([courseN, calcScore(sheet["1.8"])])
+            try:
+                workloads.append([courseN, calcScore(sheet["2.1"])])
+                qualityscores.append([courseN, calcScore(sheet["1.1"])])
+            except Exception:
+                pass
 
 
 def insertPercentile(lst, tag):
