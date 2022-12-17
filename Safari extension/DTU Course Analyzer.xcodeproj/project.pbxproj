@@ -1,0 +1,989 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3AE6A8E2294E19240024F61B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8E1294E19240024F61B /* AppDelegate.swift */; };
+		3AE6A8E4294E19240024F61B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8E3294E19240024F61B /* SceneDelegate.swift */; };
+		3AE6A8E7294E19240024F61B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8E5294E19240024F61B /* LaunchScreen.storyboard */; };
+		3AE6A8EA294E19240024F61B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8E8294E19240024F61B /* Main.storyboard */; };
+		3AE6A8F3294E19240024F61B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8F2294E19240024F61B /* AppDelegate.swift */; };
+		3AE6A8F6294E19240024F61B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8F4294E19240024F61B /* Main.storyboard */; };
+		3AE6A8FE294E19240024F61B /* DTU Course Analyzer Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3AE6A8FD294E19240024F61B /* DTU Course Analyzer Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3AE6A908294E19240024F61B /* DTU Course Analyzer Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3AE6A907294E19240024F61B /* DTU Course Analyzer Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3AE6A90E294E19240024F61B /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D1294E19200024F61B /* Main.html */; };
+		3AE6A90F294E19240024F61B /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D1294E19200024F61B /* Main.html */; };
+		3AE6A910294E19240024F61B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D3294E19200024F61B /* Icon.png */; };
+		3AE6A911294E19240024F61B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D3294E19200024F61B /* Icon.png */; };
+		3AE6A912294E19240024F61B /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D4294E19200024F61B /* Style.css */; };
+		3AE6A913294E19240024F61B /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D4294E19200024F61B /* Style.css */; };
+		3AE6A914294E19240024F61B /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D5294E19200024F61B /* Script.js */; };
+		3AE6A915294E19240024F61B /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D5294E19200024F61B /* Script.js */; };
+		3AE6A916294E19240024F61B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D6294E19200024F61B /* ViewController.swift */; };
+		3AE6A917294E19240024F61B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D6294E19200024F61B /* ViewController.swift */; };
+		3AE6A918294E19240024F61B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D7294E19240024F61B /* Assets.xcassets */; };
+		3AE6A919294E19240024F61B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D7294E19240024F61B /* Assets.xcassets */; };
+		3AE6A91A294E19240024F61B /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D9294E19240024F61B /* SafariWebExtensionHandler.swift */; };
+		3AE6A91B294E19240024F61B /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6A8D9294E19240024F61B /* SafariWebExtensionHandler.swift */; };
+		3AE6A938294E19240024F61B /* icon16.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A92D294E19240024F61B /* icon16.png */; };
+		3AE6A939294E19240024F61B /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A92E294E19240024F61B /* background.js */; };
+		3AE6A93A294E19240024F61B /* css in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A92F294E19240024F61B /* css */; };
+		3AE6A93B294E19240024F61B /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A930294E19240024F61B /* images */; };
+		3AE6A93C294E19240024F61B /* js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A931294E19240024F61B /* js */; };
+		3AE6A93D294E19240024F61B /* icon48.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A932294E19240024F61B /* icon48.png */; };
+		3AE6A93E294E19240024F61B /* icon128.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A933294E19240024F61B /* icon128.png */; };
+		3AE6A93F294E19240024F61B /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A934294E19240024F61B /* manifest.json */; };
+		3AE6A940294E19240024F61B /* db in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A935294E19240024F61B /* db */; };
+		3AE6A941294E19240024F61B /* db.html in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A936294E19240024F61B /* db.html */; };
+		3AE6A942294E19240024F61B /* contentscript.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A937294E19240024F61B /* contentscript.js */; };
+		3AE6A943294E19240024F61B /* icon16.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A92D294E19240024F61B /* icon16.png */; };
+		3AE6A944294E19240024F61B /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A92E294E19240024F61B /* background.js */; };
+		3AE6A945294E19240024F61B /* css in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A92F294E19240024F61B /* css */; };
+		3AE6A946294E19240024F61B /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A930294E19240024F61B /* images */; };
+		3AE6A947294E19240024F61B /* js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A931294E19240024F61B /* js */; };
+		3AE6A948294E19240024F61B /* icon48.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A932294E19240024F61B /* icon48.png */; };
+		3AE6A949294E19240024F61B /* icon128.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A933294E19240024F61B /* icon128.png */; };
+		3AE6A94A294E19240024F61B /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A934294E19240024F61B /* manifest.json */; };
+		3AE6A94B294E19240024F61B /* db in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A935294E19240024F61B /* db */; };
+		3AE6A94C294E19240024F61B /* db.html in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A936294E19240024F61B /* db.html */; };
+		3AE6A94D294E19240024F61B /* contentscript.js in Resources */ = {isa = PBXBuildFile; fileRef = 3AE6A937294E19240024F61B /* contentscript.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3AE6A8FF294E19240024F61B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AE6A8CB294E19200024F61B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AE6A8FC294E19240024F61B;
+			remoteInfo = "DTU Course Analyzer Extension (iOS)";
+		};
+		3AE6A909294E19240024F61B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AE6A8CB294E19200024F61B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AE6A906294E19240024F61B;
+			remoteInfo = "DTU Course Analyzer Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3AE6A921294E19240024F61B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3AE6A8FE294E19240024F61B /* DTU Course Analyzer Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A928294E19240024F61B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3AE6A908294E19240024F61B /* DTU Course Analyzer Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3AE6A8D2294E19200024F61B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		3AE6A8D3294E19200024F61B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		3AE6A8D4294E19200024F61B /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		3AE6A8D5294E19200024F61B /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		3AE6A8D6294E19200024F61B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3AE6A8D7294E19240024F61B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3AE6A8D9294E19240024F61B /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		3AE6A8DE294E19240024F61B /* DTU Course Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DTU Course Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE6A8E1294E19240024F61B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3AE6A8E3294E19240024F61B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3AE6A8E6294E19240024F61B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3AE6A8E9294E19240024F61B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3AE6A8EB294E19240024F61B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AE6A8F0294E19240024F61B /* DTU Course Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DTU Course Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE6A8F2294E19240024F61B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3AE6A8F5294E19240024F61B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3AE6A8F7294E19240024F61B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AE6A8F8294E19240024F61B /* DTU Course Analyzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DTU Course Analyzer.entitlements"; sourceTree = "<group>"; };
+		3AE6A8FD294E19240024F61B /* DTU Course Analyzer Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DTU Course Analyzer Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE6A902294E19240024F61B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AE6A907294E19240024F61B /* DTU Course Analyzer Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DTU Course Analyzer Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE6A90C294E19240024F61B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AE6A90D294E19240024F61B /* DTU Course Analyzer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DTU Course Analyzer.entitlements"; sourceTree = "<group>"; };
+		3AE6A92D294E19240024F61B /* icon16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon16.png; path = ../../extension/icon16.png; sourceTree = "<group>"; };
+		3AE6A92E294E19240024F61B /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../extension/background.js; sourceTree = "<group>"; };
+		3AE6A92F294E19240024F61B /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = ../../extension/css; sourceTree = "<group>"; };
+		3AE6A930294E19240024F61B /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../extension/images; sourceTree = "<group>"; };
+		3AE6A931294E19240024F61B /* js */ = {isa = PBXFileReference; lastKnownFileType = folder; name = js; path = ../../extension/js; sourceTree = "<group>"; };
+		3AE6A932294E19240024F61B /* icon48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon48.png; path = ../../extension/icon48.png; sourceTree = "<group>"; };
+		3AE6A933294E19240024F61B /* icon128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon128.png; path = ../../extension/icon128.png; sourceTree = "<group>"; };
+		3AE6A934294E19240024F61B /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../extension/manifest.json; sourceTree = "<group>"; };
+		3AE6A935294E19240024F61B /* db */ = {isa = PBXFileReference; lastKnownFileType = folder; name = db; path = ../../extension/db; sourceTree = "<group>"; };
+		3AE6A936294E19240024F61B /* db.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = db.html; path = ../../extension/db.html; sourceTree = "<group>"; };
+		3AE6A937294E19240024F61B /* contentscript.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = contentscript.js; path = ../../extension/contentscript.js; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3AE6A8DB294E19240024F61B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A8ED294E19240024F61B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A8FA294E19240024F61B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A904294E19240024F61B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3AE6A8CA294E19200024F61B = {
+			isa = PBXGroup;
+			children = (
+				3AE6A8CF294E19200024F61B /* Shared (App) */,
+				3AE6A8D8294E19240024F61B /* Shared (Extension) */,
+				3AE6A8E0294E19240024F61B /* iOS (App) */,
+				3AE6A8F1294E19240024F61B /* macOS (App) */,
+				3AE6A901294E19240024F61B /* iOS (Extension) */,
+				3AE6A90B294E19240024F61B /* macOS (Extension) */,
+				3AE6A8DF294E19240024F61B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3AE6A8CF294E19200024F61B /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A8D6294E19200024F61B /* ViewController.swift */,
+				3AE6A8D7294E19240024F61B /* Assets.xcassets */,
+				3AE6A8D0294E19200024F61B /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		3AE6A8D0294E19200024F61B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A8D1294E19200024F61B /* Main.html */,
+				3AE6A8D3294E19200024F61B /* Icon.png */,
+				3AE6A8D4294E19200024F61B /* Style.css */,
+				3AE6A8D5294E19200024F61B /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3AE6A8D8294E19240024F61B /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A92C294E19240024F61B /* Resources */,
+				3AE6A8D9294E19240024F61B /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		3AE6A8DF294E19240024F61B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A8DE294E19240024F61B /* DTU Course Analyzer.app */,
+				3AE6A8F0294E19240024F61B /* DTU Course Analyzer.app */,
+				3AE6A8FD294E19240024F61B /* DTU Course Analyzer Extension.appex */,
+				3AE6A907294E19240024F61B /* DTU Course Analyzer Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3AE6A8E0294E19240024F61B /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A8E1294E19240024F61B /* AppDelegate.swift */,
+				3AE6A8E3294E19240024F61B /* SceneDelegate.swift */,
+				3AE6A8E5294E19240024F61B /* LaunchScreen.storyboard */,
+				3AE6A8E8294E19240024F61B /* Main.storyboard */,
+				3AE6A8EB294E19240024F61B /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		3AE6A8F1294E19240024F61B /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A8F2294E19240024F61B /* AppDelegate.swift */,
+				3AE6A8F4294E19240024F61B /* Main.storyboard */,
+				3AE6A8F7294E19240024F61B /* Info.plist */,
+				3AE6A8F8294E19240024F61B /* DTU Course Analyzer.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		3AE6A901294E19240024F61B /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A902294E19240024F61B /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		3AE6A90B294E19240024F61B /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A90C294E19240024F61B /* Info.plist */,
+				3AE6A90D294E19240024F61B /* DTU Course Analyzer.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		3AE6A92C294E19240024F61B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AE6A92D294E19240024F61B /* icon16.png */,
+				3AE6A92E294E19240024F61B /* background.js */,
+				3AE6A92F294E19240024F61B /* css */,
+				3AE6A930294E19240024F61B /* images */,
+				3AE6A931294E19240024F61B /* js */,
+				3AE6A932294E19240024F61B /* icon48.png */,
+				3AE6A933294E19240024F61B /* icon128.png */,
+				3AE6A934294E19240024F61B /* manifest.json */,
+				3AE6A935294E19240024F61B /* db */,
+				3AE6A936294E19240024F61B /* db.html */,
+				3AE6A937294E19240024F61B /* contentscript.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AE6A8DD294E19240024F61B /* DTU Course Analyzer (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE6A922294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer (iOS)" */;
+			buildPhases = (
+				3AE6A8DA294E19240024F61B /* Sources */,
+				3AE6A8DB294E19240024F61B /* Frameworks */,
+				3AE6A8DC294E19240024F61B /* Resources */,
+				3AE6A921294E19240024F61B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AE6A900294E19240024F61B /* PBXTargetDependency */,
+			);
+			name = "DTU Course Analyzer (iOS)";
+			productName = "DTU Course Analyzer (iOS)";
+			productReference = 3AE6A8DE294E19240024F61B /* DTU Course Analyzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3AE6A8EF294E19240024F61B /* DTU Course Analyzer (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE6A929294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer (macOS)" */;
+			buildPhases = (
+				3AE6A8EC294E19240024F61B /* Sources */,
+				3AE6A8ED294E19240024F61B /* Frameworks */,
+				3AE6A8EE294E19240024F61B /* Resources */,
+				3AE6A928294E19240024F61B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AE6A90A294E19240024F61B /* PBXTargetDependency */,
+			);
+			name = "DTU Course Analyzer (macOS)";
+			productName = "DTU Course Analyzer (macOS)";
+			productReference = 3AE6A8F0294E19240024F61B /* DTU Course Analyzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3AE6A8FC294E19240024F61B /* DTU Course Analyzer Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE6A91E294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer Extension (iOS)" */;
+			buildPhases = (
+				3AE6A8F9294E19240024F61B /* Sources */,
+				3AE6A8FA294E19240024F61B /* Frameworks */,
+				3AE6A8FB294E19240024F61B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTU Course Analyzer Extension (iOS)";
+			productName = "DTU Course Analyzer Extension (iOS)";
+			productReference = 3AE6A8FD294E19240024F61B /* DTU Course Analyzer Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		3AE6A906294E19240024F61B /* DTU Course Analyzer Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AE6A925294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer Extension (macOS)" */;
+			buildPhases = (
+				3AE6A903294E19240024F61B /* Sources */,
+				3AE6A904294E19240024F61B /* Frameworks */,
+				3AE6A905294E19240024F61B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DTU Course Analyzer Extension (macOS)";
+			productName = "DTU Course Analyzer Extension (macOS)";
+			productReference = 3AE6A907294E19240024F61B /* DTU Course Analyzer Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3AE6A8CB294E19200024F61B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					3AE6A8DD294E19240024F61B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					3AE6A8EF294E19240024F61B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					3AE6A8FC294E19240024F61B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					3AE6A906294E19240024F61B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 3AE6A8CE294E19200024F61B /* Build configuration list for PBXProject "DTU Course Analyzer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3AE6A8CA294E19200024F61B;
+			productRefGroup = 3AE6A8DF294E19240024F61B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AE6A8DD294E19240024F61B /* DTU Course Analyzer (iOS) */,
+				3AE6A8EF294E19240024F61B /* DTU Course Analyzer (macOS) */,
+				3AE6A8FC294E19240024F61B /* DTU Course Analyzer Extension (iOS) */,
+				3AE6A906294E19240024F61B /* DTU Course Analyzer Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AE6A8DC294E19240024F61B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A910294E19240024F61B /* Icon.png in Resources */,
+				3AE6A8E7294E19240024F61B /* LaunchScreen.storyboard in Resources */,
+				3AE6A90E294E19240024F61B /* Main.html in Resources */,
+				3AE6A914294E19240024F61B /* Script.js in Resources */,
+				3AE6A918294E19240024F61B /* Assets.xcassets in Resources */,
+				3AE6A8EA294E19240024F61B /* Main.storyboard in Resources */,
+				3AE6A912294E19240024F61B /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A8EE294E19240024F61B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A911294E19240024F61B /* Icon.png in Resources */,
+				3AE6A913294E19240024F61B /* Style.css in Resources */,
+				3AE6A8F6294E19240024F61B /* Main.storyboard in Resources */,
+				3AE6A915294E19240024F61B /* Script.js in Resources */,
+				3AE6A919294E19240024F61B /* Assets.xcassets in Resources */,
+				3AE6A90F294E19240024F61B /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A8FB294E19240024F61B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A94B294E19240024F61B /* db in Resources */,
+				3AE6A947294E19240024F61B /* js in Resources */,
+				3AE6A946294E19240024F61B /* images in Resources */,
+				3AE6A948294E19240024F61B /* icon48.png in Resources */,
+				3AE6A945294E19240024F61B /* css in Resources */,
+				3AE6A94A294E19240024F61B /* manifest.json in Resources */,
+				3AE6A94C294E19240024F61B /* db.html in Resources */,
+				3AE6A944294E19240024F61B /* background.js in Resources */,
+				3AE6A94D294E19240024F61B /* contentscript.js in Resources */,
+				3AE6A943294E19240024F61B /* icon16.png in Resources */,
+				3AE6A949294E19240024F61B /* icon128.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A905294E19240024F61B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A940294E19240024F61B /* db in Resources */,
+				3AE6A93C294E19240024F61B /* js in Resources */,
+				3AE6A93B294E19240024F61B /* images in Resources */,
+				3AE6A93D294E19240024F61B /* icon48.png in Resources */,
+				3AE6A93A294E19240024F61B /* css in Resources */,
+				3AE6A93F294E19240024F61B /* manifest.json in Resources */,
+				3AE6A941294E19240024F61B /* db.html in Resources */,
+				3AE6A939294E19240024F61B /* background.js in Resources */,
+				3AE6A942294E19240024F61B /* contentscript.js in Resources */,
+				3AE6A938294E19240024F61B /* icon16.png in Resources */,
+				3AE6A93E294E19240024F61B /* icon128.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AE6A8DA294E19240024F61B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A916294E19240024F61B /* ViewController.swift in Sources */,
+				3AE6A8E2294E19240024F61B /* AppDelegate.swift in Sources */,
+				3AE6A8E4294E19240024F61B /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A8EC294E19240024F61B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A917294E19240024F61B /* ViewController.swift in Sources */,
+				3AE6A8F3294E19240024F61B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A8F9294E19240024F61B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A91A294E19240024F61B /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AE6A903294E19240024F61B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE6A91B294E19240024F61B /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AE6A900294E19240024F61B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AE6A8FC294E19240024F61B /* DTU Course Analyzer Extension (iOS) */;
+			targetProxy = 3AE6A8FF294E19240024F61B /* PBXContainerItemProxy */;
+		};
+		3AE6A90A294E19240024F61B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AE6A906294E19240024F61B /* DTU Course Analyzer Extension (macOS) */;
+			targetProxy = 3AE6A909294E19240024F61B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3AE6A8D1294E19200024F61B /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AE6A8D2294E19200024F61B /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		3AE6A8E5294E19240024F61B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AE6A8E6294E19240024F61B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3AE6A8E8294E19240024F61B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AE6A8E9294E19240024F61B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3AE6A8F4294E19240024F61B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AE6A8F5294E19240024F61B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3AE6A91C294E19240024F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3AE6A91D294E19240024F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		3AE6A91F294E19240024F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer.Extension;
+				PRODUCT_NAME = "DTU Course Analyzer Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3AE6A920294E19240024F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer.Extension;
+				PRODUCT_NAME = "DTU Course Analyzer Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AE6A923294E19240024F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer;
+				PRODUCT_NAME = "DTU Course Analyzer";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3AE6A924294E19240024F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer;
+				PRODUCT_NAME = "DTU Course Analyzer";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AE6A926294E19240024F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/DTU Course Analyzer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer.Extension;
+				PRODUCT_NAME = "DTU Course Analyzer Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3AE6A927294E19240024F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/DTU Course Analyzer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer.Extension;
+				PRODUCT_NAME = "DTU Course Analyzer Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3AE6A92A294E19240024F61B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/DTU Course Analyzer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer;
+				PRODUCT_NAME = "DTU Course Analyzer";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3AE6A92B294E19240024F61B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/DTU Course Analyzer.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B4J76W3MW6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DTU Course Analyzer";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dk.smkid.courseanalyzer;
+				PRODUCT_NAME = "DTU Course Analyzer";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3AE6A8CE294E19200024F61B /* Build configuration list for PBXProject "DTU Course Analyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE6A91C294E19240024F61B /* Debug */,
+				3AE6A91D294E19240024F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE6A91E294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE6A91F294E19240024F61B /* Debug */,
+				3AE6A920294E19240024F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE6A922294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE6A923294E19240024F61B /* Debug */,
+				3AE6A924294E19240024F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE6A925294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE6A926294E19240024F61B /* Debug */,
+				3AE6A927294E19240024F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AE6A929294E19240024F61B /* Build configuration list for PBXNativeTarget "DTU Course Analyzer (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AE6A92A294E19240024F61B /* Debug */,
+				3AE6A92B294E19240024F61B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3AE6A8CB294E19200024F61B /* Project object */;
+}

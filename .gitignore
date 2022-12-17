@@ -11,3 +11,5 @@ __pycache__/
 .idea/
 Mozzila_submission
 .DS_Store
+xcuserdata/
+*.xcuserstate

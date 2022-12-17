@@ -26,7 +26,8 @@
 	"web_accessible_resources": ["db/data.js", "contentscript.js"],
 
 	"background": {
-	    "scripts": ["js/jquery.js", "/db/data.js", "background.js"]
+	    "scripts": ["js/jquery.js", "/db/data.js", "background.js"],
+		"persistent": false
 	},
 
 	"browser_action": {
