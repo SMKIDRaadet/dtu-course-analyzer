@@ -31,9 +31,10 @@ Data was gathered using a Python script that scraped DTU's coursebase and format
  1. Open the extensions page
  2. Enable developer mode (Upper right corner)
  3. Click on "Load unpacked"
- 4. Select the `extension` folder within the project
+ 4. Select the `extension` directory  within the project
 ### Firefox
  0. Install `web-ext`
-   - npm install --global web-ext
- 1. In a terminal window, `cd` into the `extension` within the project
+     - Run `npm install --global web-ext`
+ 1. In a terminal window, `cd` into the `extension` directory within the project
  2. Run the extension using `web-ext run`
+
