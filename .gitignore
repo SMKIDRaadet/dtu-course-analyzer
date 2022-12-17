@@ -10,3 +10,4 @@ extension.pem
 __pycache__/
 .idea/
 Mozzila_submission
+.DS_Store
