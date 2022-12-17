@@ -59,7 +59,7 @@ function presentData(data) {
   addRow(
     $("<a/>", {
       href:
-        "https://github.com/OskarNS/dtu-course-analyzer/blob/master/README.md",
+        "https://github.com/SMKIDRaadet/dtu-course-analyzer/blob/master/README.md",
       target: "_blank",
     }).append($("<label/>", { text: "What is this?" }))
   );
