@@ -14,3 +14,14 @@ The following is an explanation of how the values were calculated (higher is bet
 
 ## Data gathering and analysis
 Data was gathered using a Python script that scraped DTU's coursebase and formatted it so that the extension can use it.
+
+# Development
+## Setup
+ 1. Install python dependencies `pip3 install -r requirements.txt`
+
+## Gather data
+ 1. Update the list of courses using getCourseNumbers.js
+ 2. Create a file called `secret.txt` containing the `ASP.NET_SessionId` cookie set when entering https://kurser.dtu.dk. Make sure there is no leading or trailing whitespace and newlines
+ 3. Run the scraper `python3 scraper.py`
+ 4. Analyze the data for Chrome using `python3 analyzer.py chrome_extension`
+ 5. Analyze the data for Firefox using `python3 analyzer.py firefox_extension`
