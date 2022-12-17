@@ -12,6 +12,7 @@ import json
 import sys
 import datetime
 import traceback
+from tqdm import tqdm
 
 now = datetime.datetime.now()
 
@@ -204,9 +205,9 @@ class Course(object):
 
 courseDic = {}
 
-for i, courseN in enumerate(courses):
+for i, courseN in tqdm(enumerate(courses),total=len(courses)):
     try:
-        print("Course: "+courseN)
+        #print("Course: "+courseN)
         course = Course(courseN)
         overviewResp = respObj("http://kurser.dtu.dk/course/" + courseN + "/info")
 
