@@ -4,18 +4,10 @@ course = window.location.href.match(
 
 if (course.length == 5) {
   console.log("Course ID:", course);
-  if(getBrowser() == "Chrome") {
-	chrome.extension.sendRequest({ getInfo: course });
-  } else {
-	browser.runtime.sendMessage({ getInfo: course });
-  }
+  chrome.runtime.sendMessage({ getInfo: course });
 }
 
-if(getBrowser() == "Chrome") {
-  chrome.runtime.onMessage.addListener(listen);
-} else {
-  browser.runtime.onMessage.addListener(listen);
-}
+chrome.runtime.onMessage.addListener(listen);
 									  
 function listen(request, sender, sendResponse) {
   if (request[course]) {
@@ -98,17 +90,4 @@ function getColor(value) {
   }
   var hue = ((1 - value) * 120).toString(10);
   return ["hsl(", hue, ",100%,50%)"].join("");
-}
-
-// From: https://stackoverflow.com/a/45985333/5257653
-function getBrowser() {
-  if (typeof chrome !== "undefined") {
-	if (typeof browser !== "undefined") {
-	  return "Firefox";
-	} else {
-	  return "Chrome";
-	}
-  } else {
-	return "Edge";
-  }
 }
