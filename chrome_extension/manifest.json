@@ -1,8 +1,14 @@
 {
-	"name":"DTU Course Analyzer",
-	"description":"Analyzes and scores courses on kurser.dtu.dk/xxxxx",
-	"version":"1.2.3",
-	"manifest_version":2,
+    "applications": {
+        "gecko": {
+            "id": "dtu.course.analyzer@gmail.com",
+            "strict_min_version": "52.0"
+        }
+    },
+	"name": "DTU Course Analyzer",
+	"description": "Analyzes and scores courses on kurser.dtu.dk/xxxxx",
+	"version": "1.2.5",
+	"manifest_version": 2,
 	"icons": {
 			"16": "icon16.png",
 			"48": "icon48.png",
