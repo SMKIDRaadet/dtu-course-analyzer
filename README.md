@@ -25,3 +25,15 @@ Data was gathered using a Python script that scraped DTU's coursebase and format
  2. Create a file called `secret.txt` containing the `ASP.NET_SessionId` cookie set when entering https://kurser.dtu.dk. Make sure there is no leading or trailing whitespace and newlines
  3. Run the scraper `python3 scraper.py`
  4. Analyze the data using `python3 analyzer.py extension`
+ 
+## Debugging
+### Chrome
+ 1. Open the extensions page
+ 2. Enable developer mode (Upper right corner)
+ 3. Click on "Load unpacked"
+ 4. Select the `extension` folder within the project
+### Firefox
+ 0. Install `web-ext`
+   - npm install --global web-ext
+ 1. In a terminal window, `cd` into the `extension` within the project
+ 2. Run the extension using `web-ext run`
