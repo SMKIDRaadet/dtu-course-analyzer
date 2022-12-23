@@ -4,7 +4,7 @@ $(document).ready( function() {
         "bInfo" : false,
         "fixedHeader": true,
     "aoColumnDefs": [
-      { "bSearchable": true, "aTargets": [ 0 ] }, { type: "non-empty", "bSearchable": true,"aTargets": [ 1 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 2 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 3 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 4 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 5 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 6 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 7 ] }
+      { "bSearchable": true, "aTargets": [ 0 ] }, { type: "non-empty", "bSearchable": true,"aTargets": [ 1 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 2 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 3 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 4 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 5 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 6 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 7 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 8 ] }, { type: "non-empty", "asSorting": [ "desc", "asc" ], "bSearchable": false, "aTargets": [ 9 ] }
     ] } );
 } );
 

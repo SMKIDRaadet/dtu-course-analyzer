@@ -2,3 +2,4 @@ bs4
 urllib3
 requests
 tqdm
+scipy

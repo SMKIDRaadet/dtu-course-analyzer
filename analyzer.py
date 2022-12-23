@@ -2,6 +2,9 @@ import json
 import sys
 import pprint
 from Prepender import *
+from scipy import stats
+from math import sqrt
+from collections import namedtuple
 
 if len(sys.argv) != 2:
     print('usage: ' + sys.argv[0] + ' <extension-folder-name>')
@@ -12,6 +15,9 @@ pp = pprint.PrettyPrinter(indent=2)
 with open('coursedic.json') as file:
     courseDic = json.load(file)
 
+data_value = namedtuple('Data_value', ['course', 'value', 'conf_int', 'index'])
+
+
 db = {}
 grades = ["-3", "00", "02", "4", "7", "10", "12"]
 
@@ -21,16 +27,22 @@ qualityscores = []
 avg = []
 
 def calcScore(dic):
-    score = 0
+    # Calculates the average score and the margin of error with a 95% confidence interval using $$t_{0.975} sd/sqrt(n) = t_{0.975} sqrt(var)/sqrt(n) = t_{0.975} sqrt(\sum x_i^n * number_of_times_x=x  / n)/sqrt(n) = t_{0.975} sqrt(\sum x_i^n * number_of_times_x=x )/n$$
+    score_sum = 0
     total_votes = 0
-
+    square_sum = 0
     for id, votes in dic.items():
         if id != "question":
-
-            score += (5-int(id)) * int(votes)
-
+            value = 5-int(id)
+            score_sum += value * int(votes)
+            square_sum += value * value * int(votes)
             total_votes += int(votes)
-    return score / total_votes
+
+    avg = score_sum / total_votes
+    t = stats.t(df=total_votes-1).ppf(0.975)
+    conf_int = t * sqrt(square_sum) / total_votes
+
+    return avg, conf_int
 
 
 for courseN, course in courseDic.items():
@@ -55,11 +67,11 @@ for courseN, course in courseDic.items():
             db_sheet["passpercent"] = sheet["pass_percentage"]
             try:
                 db_sheet["avg"] = sheet["avg"]
-                avg.append([courseN, sheet["avg"]])
+                avg.append(data_value(courseN, sheet["avg"], None, None))
             except Exception:
                 pass
             # print(sheet["pass_percentage"])
-            pass_percentages.append([courseN, sheet["pass_percentage"]])
+            pass_percentages.append(data_value(courseN, sheet["pass_percentage"], None, None))
 
             db_sheet["grades"] = {}
             try:
@@ -71,31 +83,37 @@ for courseN, course in courseDic.items():
 
         if categoryN == "reviews":
             try:
-                workloads.append([courseN, calcScore(sheet["2.1"])])
-                qualityscores.append([courseN, calcScore(sheet["1.1"])])
+                two_one = calcScore(sheet["2.1"])
+                workloads.append(data_value(courseN, two_one[0], two_one[1], None))
+                one_one = calcScore(sheet["1.1"])
+                qualityscores.append(data_value(courseN, one_one[0], one_one[1], None))
             except Exception:
                 pass
 
 
 def insertPercentile(lst, tag):
     global db
-    lst.sort(key=lambda sublist: sublist[0], reverse=True)
-    lst.sort(key=lambda sublist: sublist[1])
+    lst.sort(key=lambda sublist: sublist.course, reverse=True)
+    lst.sort(key=lambda sublist: sublist.value)
 
     prev_val = -1
     index = -1
+    
+    indices = {}
+
     for i, course in enumerate(lst):
-        val = course[1]
+        val = course.value
         if val > prev_val:
             index += 1
-        course.append(index)
+        indices[course.course] = index
 
         prev_val = val
-    # pass_percentages[1][2] = 1337
 
     for i, course in enumerate(lst):
-        course.append(round(100 * course[2] / (index), 1))
-        db[course[0]][tag] = course[3]
+        if(indices[course.course]):
+            db[course.course][tag] = round(100 *  indices[course.course] / (index), 1)
+        if(course.conf_int):
+            db[course.course][tag + "_confint"] = "±" + str(course.conf_int)[0:5]
     return lst
 
 
@@ -108,7 +126,7 @@ insertPercentile(workloads, "workload")
 lazyscores = []
 for courseN, course in db.items():
     try:
-        lazyscores.append([courseN, course['pp'] + course['workload']])
+        lazyscores.append(data_value(courseN, course['pp'] + course['workload'], None))
     except Exception:
         pass
 
@@ -135,16 +153,16 @@ with open('data.json', 'w') as outfile:
 
 table = ''
 headNames = [["name", "Name"], ["avg", "Average Grade"], ["avgp", "Average Grade Percentile"], ["passpercent", "Percent Passed"],
-             ["qualityscore", "Course Rating"], ["workload", "Workload"], ["lazyscore", "Lazy Score Percentile"]]
+             ["qualityscore", "Course Rating"], ["qualityscore_confint", "Course Rating confidence interval"], ["workload", "Workload"], ["workload_confint", "Workload confidence interval"], ["lazyscore", "Lazy Score Percentile"]]
 table += '<table id="example" class="display" cellspacing="0" width="100%"><thead><tr>'
 table += '<th>Course</th>'
 for header in headNames:
     table += '<th>' + header[1] + '</th>'
-table += '</tr></thead><tbody>'
+table += '</tr></thead>\n<tbody>\n'
 
 for course, data in db.items():
     table += '<tr>'
-    table += '<td>' + '<a href="http://kurser.dtu.dk/course/' + course + '">' + course + '</a></td>'
+    table += '<td>' + '<a href="http://kurser.dtu.dk/course/' + course + '">' + course + '</a></td>\n'
     for header in headNames:
         key = header[0]
         val = ""
@@ -152,7 +170,7 @@ for course, data in db.items():
             val = str(data[key])
 
         table += '<td>' + val + '</td>'
-    table += '</tr>'
+    table += '</tr>\n'
 table += '</tbody></table>'
 
 
