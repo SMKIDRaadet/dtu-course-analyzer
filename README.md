@@ -1,4 +1,6 @@
 # DTU Course Analyzer
+The data is provided as is, with no guarentee and responsibility for its correctness.
+
 
 ## Installation
 https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
