@@ -20,15 +20,16 @@ workloads = []
 qualityscores = []
 avg = []
 
-def calcScore(dic):
+def calcScore(dic, bestOptionFirst):
     score = 0
     total_votes = 0
 
     for id, votes in dic.items():
         if id != "question":
-
-            score += (5-int(id)) * int(votes)
-
+            if bestOptionFirst: 
+                score += (5 - int(id)) * int(votes)
+            else:
+                score += (1 + int(id)) * int(votes)
             total_votes += int(votes)
     return score / total_votes
 
@@ -70,12 +71,17 @@ for courseN, course in courseDic.items():
                 pass
 
         if categoryN == "reviews":
+            bestOptionFirst = None
+            if sheet["firstOption"] == "Helt uenig":
+                bestOptionFirst = False
+            elif sheet["firstOption"] == "Helt enig":
+                bestOptionFirst = True
             try:
-                workloads.append([courseN, calcScore(sheet["2.1"])])
-                qualityscores.append([courseN, calcScore(sheet["1.1"])])
-            except Exception:
+                workloads.append([courseN, calcScore(sheet["2.1"], True)])
+                qualityscores.append([courseN, calcScore(sheet["1.1"], bestOptionFirst)])
+            except Exception as e:
+                #print("Error in calculating scores:", str(e))            
                 pass
-
 
 def insertPercentile(lst, tag):
     global db

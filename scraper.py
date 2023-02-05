@@ -158,19 +158,21 @@ class Course(object):
                 publicContainer = soup.find("div", {"id": "CourseResultsPublicContainer"})
                 dic["participants"]=int(publicContainer.find("table").findAll("tr")[1].findAll("td")[0].text)
                 dic["timestamp"] = publicContainer.find("h2").text[-3:]
+                firstOptionLabel = soup.find("div", {"class": "RowWrapper"}).find("div", {"class": "FinalEvaluation_Result_OptionColumn"})
+                if firstOptionLabel:
+                    dic["firstOption"] = firstOptionLabel.text
+                else:
+                    print("No sorting found for \"", removeWhitespace(publicContainer.find("h2").text), "\" results may be wrong")
                 for container in containers:
                     name = container.find("div", {"class": "FinalEvaluation_Result_QuestionPositionColumn"}).text
                     name = removeWhitespace(name)
                     dic[name] = {}
                     dic[name]["question"] = container.find("div", {"class": "FinalEvaluation_QuestionText"}).text
-
                     for i, row in enumerate(container.findAll("div", {"class": "RowWrapper"})):
                         dic[name][i] = removeWhitespace(row.find("div", {"class": "FinalEvaluation_Result_AnswerCountColumn"}).find("span").text)
-
             return dic
         except KeyError:
             return False
-
     def gather(self):
         dic = {}
         d = [["grades", self.gradeLinks, self.extractGrades], ["reviews", self.reviewLinks, self.extractReviews]]
