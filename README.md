@@ -1,5 +1,5 @@
 # DTU Course Analyzer
-The extension is provided as is, with no guarentee nor responsibility for its stability and correctness. For more, see the license.
+The extension is provided as is, with no guarentee nor responsibility for its stability and correctness. For more info, see the license.
 
 
 ## Installation
