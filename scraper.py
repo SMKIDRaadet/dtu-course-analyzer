@@ -7,7 +7,7 @@ import requests
 import re
 import pickle
 import pprint
-from bs4 import BeautifulSoup#
+from bs4 import BeautifulSoup
 import json
 import sys
 import datetime
