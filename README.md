@@ -25,7 +25,7 @@ Data was gathered using a Python script that scraped DTU's coursebase and format
 ## Gather data
  1. Create a file called `secret.txt` containing the `ASP.NET_SessionId` cookie set when entering https://kurser.dtu.dk. Make sure there is no leading or trailing whitespace and newlines.
 If you are using Firefox, you can get the cookie by pressing F12, going to the storage tab, and copying the value of the `ASP.NET_SessionId` cookie.
- 2. Update the list of courses using `python3 update_courses.py`
+ 2. Update the list of courses using `python3 getCourseNumbers.py`
  3. Run the scraper `python3 scraper.py`
  4. Analyze the data using `python3 analyzer.py extension`
  
