@@ -3,8 +3,10 @@ The extension is provided as is, with no guarentee nor responsibility for its st
 
 
 ## Installation
+### Google Chrome
 https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
-https://addons.mozilla.org/en-US/firefox/addon/dtu-course-analyzer/
+### Firefox
+https://addons.mozilla.org/en-US/firefox/addon/dtu-course-analyzer-2023
 
 ## Chrome extension
 The following is an explanation of how the values were calculated (higher is better)
