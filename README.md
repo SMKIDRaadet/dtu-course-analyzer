@@ -1,9 +1,37 @@
 # DTU Course Analyzer
+So here it is, the brand new version of DTU Course Analyzer with data from the spring courses of 2023.
 The extension is provided as is, with no guarentee nor responsibility for its stability and correctness. For more info, see the license.
 
 
 ## Installation
-### Google Chrome
+
+Installation in Chrome (Yes, we know it's a hassle, but we can't access to change the version in the Chrome web store):
+1. Download: https://github.com/SMKIDRaadet/dtu-course-analyzer/archive/refs/tags/v1.3.5.zip
+2. In Chrome, go to the page: chrome://extensions/
+3. Enable developer mode
+4. Click on "Load unpacked" and select the "extension" folder in what you downloaded in step 1.
+
+Installation in Safari (iPhone and iPad):
+1. Open the page https://testflight.apple.com/join/1yBrqMQQ
+2. Follow the steps described on the page
+3. Open the app
+3. In Safari, press the "Aa" button in the address bar
+4. Press "Manage Extensions" and enable the extension
+5. Go to a course on kurser.dtu.dk
+6. Press the "Aa" button in the address bar
+7. Press DTU Course Analyzer and give it permission to modify kurser.dtu.dk
+
+Installation in Safari (Mac):
+1. Open the page https://testflight.apple.com/join/1yBrqMQQ
+2. Follow the steps described on the page
+3. Open the app
+3. In Safari, open settings
+4. Go to the "Extensions" tab and enable the extension
+5. Press "Manage Extensions" and enable the extension
+6. Go to a course on kurser.dtu.dk
+7. Press DTU Course Analyzer in the address bar and give it permission to modify kurser.dtu.dk"
+
+### Google Chrome (old version)
 https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
 ### Firefox
 https://addons.mozilla.org/en-US/firefox/addon/dtu-course-analyzer-2023
