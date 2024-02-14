@@ -1,3 +1,7 @@
+"""
+This script scrapes the DTU course evaluation and grade data from the DTU website and stores it in coursedic.json.
+It uses the course numbers from coursenumbers.txt and the key from secret.txt to access the data.
+"""
 import time
 start_time = time.time()
 
@@ -9,6 +13,7 @@ import json
 import datetime
 import traceback
 from tqdm import tqdm
+import os
 
 now = datetime.datetime.now()
 
@@ -18,9 +23,17 @@ file = open("coursenumbers.txt", 'r')
 courses = file.read().split(",")
 file.close()
 
-file = open("secret.txt", 'r')
-key = file.read()
-file.close()
+key = os.environ.get('SESSION_ID', False)
+if not key:
+    BOLD = '\033[1m'
+    WARNING = '\033[93m'
+    ENDC = '\033[0m'
+
+    print(BOLD, WARNING, "No SESSION_ID found in environment variables.")
+    print("Add a Github Secrets (see https://docs.github.com/en/actions/security-guides/using-secrets-in-github"
+          "-actions#creating-secrets-for-a-repository) named SESSION_ID containing the value of the ASP.NET_SessionId"
+          " cookie from kurser.dtu.dk", ENDC)
+    exit(-1)
 
 
 def printlog(txt):
