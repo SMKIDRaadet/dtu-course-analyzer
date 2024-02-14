@@ -54,12 +54,30 @@ Data was gathered using a Python script that scraped DTU's coursebase and format
  1. Install python dependencies `pip3 install -r requirements.txt`
 
 ## Gather data
- 1. Create a file called `secret.txt` containing the `ASP.NET_SessionId` cookie set when you are logged into https://kurser.dtu.dk with a DTU account. Make sure there is no leading or trailing whitespace and newlines.
-If you are using Firefox, you can get the cookie by pressing F12, going to the storage tab, and copying the value of the `ASP.NET_SessionId` cookie.
- 2. Update the list of courses using `python3 getCourseNumbers.py`
- 3. Run the scraper `python3 scraper.py`
- 4. Analyze the data using `python3 analyzer.py extension`
- 
+
+### Locally
+
+1. Create an env var called `SESSION_ID` containing the `ASP.NET_SessionId` cookie set when you are logged
+   into https://kurser.dtu.dk with a DTU account. Make sure there is no leading or trailing whitespace and newlines.
+   If you are using Firefox, you can get the cookie by pressing F12, going to the storage tab, and copying the value of
+   the `ASP.NET_SessionId` cookie.
+2. Update the list of courses using `python3 getCourseNumbers.py`
+3. Run the scraper `python3 scraper.py`
+4. Analyze the data using `python3 analyzer.py extension`
+
+### Using GitHub Workflow (will also push to GitHub Pages)
+
+1. In _Settings > Secrets and variables > Actions_ create/edit a _Repository secret_ called `SESSION_ID` containing the
+   `ASP.NET_SessionId` cookie set when you are logged into https://kurser.dtu.dk with a DTU account. Make sure there is
+   no leading or trailing whitespace and newlines.
+   If you are using Firefox, you can get the cookie by pressing F12, going to the storage tab, and copying the value of
+   the `ASP.NET_SessionId` cookie.
+2. Go to https://github.com/SMKIDRaadet/dtu-course-analyzer/actions/workflows/update-data.yaml, select _Run workflow_
+   then the branch and then _Run workflow_.
+
+This will publish two pages [db.html](https://smkidraadet.github.io/dtu-course-analyzer/)
+and [data.json](https://seb-sti1.github.io/dtu-course-analyzer/data.json) to GitHub Pages.
+
 ## Debugging
 ### Chrome
  1. Open the extensions page

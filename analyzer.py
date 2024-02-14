@@ -1,3 +1,8 @@
+"""
+This file analyse the data from coursedic.json and create the result in the data.json, [extension]/db.html
+and [extension]/db/data.js.
+"""
+
 import json
 import sys
 import pprint
