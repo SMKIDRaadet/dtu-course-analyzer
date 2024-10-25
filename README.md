@@ -1,15 +1,18 @@
 # DTU Course Analyzer
-So here it is, the brand new version of DTU Course Analyzer with data from the spring courses of 2023.
+So here it is, the brand new version of DTU Course Analyzer with data from the spring courses of 2024.
 The extension is provided as is, with no guarentee nor responsibility for its stability and correctness. For more info, see the license.
 
 
 ## Installation
 
-Installation in Chrome (Yes, we know it's a hassle, but we can't access to change the version in the Chrome web store):
-1. Download: https://github.com/SMKIDRaadet/dtu-course-analyzer/archive/refs/tags/v1.3.5.zip
+Installation in Chrome:
+1. In Chrome, go to https://chromewebstore.google.com/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde and install the extension
+
+Installation in Chrome from GitHub
+1. Download: https://github.com/SMKIDRaadet/dtu-course-analyzer/archive/refs/tags/v1.3.6.zip
 2. In Chrome, go to the page: chrome://extensions/
 3. Enable developer mode
-4. Click on "Load unpacked" and select the "extension" folder in what you downloaded in step 1.
+4. Click on "Load unpacked" and select the "extension" folder in what you downloaded in step 1
 
 Installation in Safari (iPhone and iPad):
 1. Open the page https://testflight.apple.com/join/1yBrqMQQ
