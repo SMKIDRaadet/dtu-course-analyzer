@@ -15,30 +15,27 @@ Installation in Chrome from GitHub
 4. Click on "Load unpacked" and select the "extension" folder in what you downloaded in step 1
 
 Installation in Safari (iPhone and iPad):
-1. Open the page https://testflight.apple.com/join/1yBrqMQQ
-2. Follow the steps described on the page
-3. Open the app
+1. Compile the Safari extension located at https://github.com/SMKIDRaadet/dtu-course-analyzer/tree/master/Safari%20extension in Xcode
+2. Open the app
 3. In Safari, press the "Aa" button in the address bar
-4. Press "Manage Extensions" and enable the extension
+4. Tap "Manage Extensions" and enable the extension
 5. Go to a course on kurser.dtu.dk
-6. Press the "Aa" button in the address bar
-7. Press DTU Course Analyzer and give it permission to modify kurser.dtu.dk
+6. Tap the "Aa" button in the address bar
+7. Tap DTU Course Analyzer and give it permission to modify kurser.dtu.dk
 
 Installation in Safari (Mac):
-1. Open the page https://testflight.apple.com/join/1yBrqMQQ
-2. Follow the steps described on the page
-3. Open the app
+1. Compile the Safari extension located at https://github.com/SMKIDRaadet/dtu-course-analyzer/tree/master/Safari%20extension in Xcode
+2. Open the app
 3. In Safari, open settings
 4. Go to the "Extensions" tab and enable the extension
-5. Press "Manage Extensions" and enable the extension
+5. Click on "Manage Extensions" and enable the extension
 6. Go to a course on kurser.dtu.dk
-7. Press DTU Course Analyzer in the address bar and give it permission to modify kurser.dtu.dk"
+7. Click on DTU Course Analyzer in the address bar and give it permission to modify kurser.dtu.dk"
 
 ### Google Chrome (old version)
 https://chrome.google.com/webstore/detail/dtu-course-analyzer/bimhgdngikcnelkhjindmdghndfmdcde
 ### Firefox
-https://addons.mozilla.org/en-US/firefox/addon/dtu-course-analyzer-2023
-(This version is managed by [Mathias Herløv Lund](https://github.com/SalisMaxima))
+https://addons.mozilla.org/en-US/firefox/addon/dtu-course-analyzer/, an alternative version managed by [Mathias Herløv Lund](https://github.com/SalisMaxima) is available [here](https://addons.mozilla.org/en-US/firefox/addon/dtu-course-analyzer-2023).
 
 ## Chrome extension
 The following is an explanation of how the values were calculated (higher is better)
@@ -57,7 +54,7 @@ Data was gathered using a Python script that scraped DTU's coursebase and format
  1. Install python dependencies `pip3 install -r requirements.txt`
 
 ## Gather data
- 1. Create a file called `secret.txt` containing the `ASP.NET_SessionId` cookie set when entering https://kurser.dtu.dk. Make sure there is no leading or trailing whitespace and newlines.
+ 1. Create a file called `secret.txt` containing the `ASP.NET_SessionId` cookie set when you are logged into https://kurser.dtu.dk with a DTU account. Make sure there is no leading or trailing whitespace and newlines.
 If you are using Firefox, you can get the cookie by pressing F12, going to the storage tab, and copying the value of the `ASP.NET_SessionId` cookie.
  2. Update the list of courses using `python3 getCourseNumbers.py`
  3. Run the scraper `python3 scraper.py`
