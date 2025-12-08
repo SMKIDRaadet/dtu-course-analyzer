@@ -1,21 +1,22 @@
-course = window.location.href.match(
+// Extract course ID from URL
+const courseMatch = window.location.href.match(
   /^http.:\/\/kurser.dtu.dk\/course\/(?:[0-9-]*\/)?([0-9]{5})/
-)[1];
+);
+const courseId = courseMatch ? courseMatch[1] : null;
 
-if (course.length == 5) {
-  console.log("Course ID:", course);
-  chrome.runtime.sendMessage({ getInfo: course });
+if (courseId && courseId.length === 5) {
+  // Send message to background worker and wait for callback
+  chrome.runtime.sendMessage({ getInfo: courseId }, (response) => {
+    // Check if we got a valid response object for this course
+    if (response && response[courseId]) {
+      presentData(response[courseId]);
+    } else {
+      presentData(null);
+    }
+  });
 }
 
-chrome.runtime.onMessage.addListener(listen);
-									  
-function listen(request, sender, sendResponse) {
-  if (request[course]) {
-    presentData(request[course]);
-  }
-}
-
-outputArr = [
+const outputArr = [
   ["Average grade", "avg", "", 12],
   ["Average grade percentile", "avgp", "%", 100],
   ["Percent passed", "passpercent", "%", 100],
@@ -23,71 +24,95 @@ outputArr = [
   ["Workscore percentile", "workload", "%", 100],
   ["Lazyscore percentile 🍺", "lazyscore", "%", 100],
 ];
+
 function presentData(data) {
-  $(".box.information > table")
-    .first()
-    .after($("<table/>").append($("<tbody/>", { id: "DTU-Course-Analyzer" })));
-  addRow($("<span/>").text("—DTU Course Analyzer—"));
+  // Vanilla JS selector: Find the table inside .box.information
+  const infoBoxTable = document.querySelector(".box.information > table");
+  
+  // Guard clause if the page structure changes or element isn't found
+  if (!infoBoxTable) return;
+
+  // Create the container table
+  const table = document.createElement("table");
+  const tbody = document.createElement("tbody");
+  tbody.id = "DTU-Course-Analyzer";
+  table.appendChild(tbody);
+
+  // Insert our table immediately after the existing info table
+  infoBoxTable.insertAdjacentElement("afterend", table);
+
+  // Add Header Row
+  const headerText = document.createElement("span");
+  headerText.textContent = "—DTU Course Analyzer—";
+  addRow(tbody, headerText);
 
   if (data) {
-    for (i = 0; i < outputArr.length; i++) {
-      key = outputArr[i][1];
-      val = data[key];
+    outputArr.forEach(([label, key, unit, maxVal]) => {
+      let val = data[key];
 
-      val = Math.round(val * 10) / 10;
-      if (typeof val != "undefined" && !isNaN(val)) {
-        addRow(
-          $("<span/>", { text: outputArr[i][0] }),
-          val,
-          outputArr[i][2],
-          true,
-          outputArr[i][3]
-        );
+      if (typeof val !== "undefined" && !isNaN(val)) {
+        val = Math.round(val * 10) / 10;
+        
+        // Create label span
+        const labelSpan = document.createElement("span");
+        labelSpan.textContent = label;
+
+        addRow(tbody, labelSpan, val, unit, true, maxVal);
       }
-    }
+    });
   } else {
-    addRow("No data found for this course");
+    addRow(tbody, "No data found for this course");
   }
-  addRow(
-    $("<a/>", {
-      href:
-        "https://github.com/SMKIDRaadet/dtu-course-analyzer/blob/master/README.md",
-      target: "_blank",
-    }).append($("<label/>", { text: "What is this?" }))
-  );
+
+  // Add Footer Link
+  const link = document.createElement("a");
+  link.href = "https://github.com/SMKIDRaadet/dtu-course-analyzer/blob/master/README.md";
+  link.target = "_blank";
+  
+  const linkLabel = document.createElement("label");
+  linkLabel.textContent = "What is this?";
+  linkLabel.style.cursor = "pointer"; // Make it look clickable
+  
+  link.appendChild(linkLabel);
+  addRow(tbody, link);
 }
 
-var tdIndex = 0;
+function addRow(tbody, contentLeft, value = "", unit = "", colored = false, maxVal = 1) {
+  const tr = document.createElement("tr");
 
-function addRow(
-  td1Elem,
-  td2val = "",
-  unitText = "",
-  colored = false,
-  maxValue = 1
-) {
-  id = "dca-td-" + tdIndex;
+  // Left Column (Label)
+  const tdLeft = document.createElement("td");
+  const b = document.createElement("b");
+  if (typeof contentLeft === "string") {
+    b.textContent = contentLeft;
+  } else {
+    b.appendChild(contentLeft);
+  }
+  tdLeft.appendChild(b);
+  tr.appendChild(tdLeft);
 
-  $("#DTU-Course-Analyzer").append(
-    $("<tr/>")
-      .append($("<td/>").append($("<b/>").append(td1Elem)))
-      .append(
-        $("<td/>").append($("<span/>", { id: id, text: td2val + unitText }))
-      )
-  );
+  // Right Column (Value)
+  const tdRight = document.createElement("td");
+  const span = document.createElement("span");
+  span.textContent = value + unit;
 
   if (colored) {
-    elem = document.getElementById(id);
-    elem.style.backgroundColor = getColor(1 - td2val / maxValue);
+    span.style.backgroundColor = getColor(1 - value / maxVal);
+    // Add some padding/radius to make it look like the original chips
+    span.style.padding = "2px 6px";
+    span.style.borderRadius = "4px";
   }
-  tdIndex++;
+
+  tdRight.appendChild(span);
+  tr.appendChild(tdRight);
+
+  tbody.appendChild(tr);
 }
 
 function getColor(value) {
-  //value from 0 to 1
-  if (value > 1) {
-    value = 1;
-  }
-  var hue = ((1 - value) * 120).toString(10);
-  return ["hsl(", hue, ",100%,50%)"].join("");
+  // Clamp value between 0 and 1
+  const clamped = Math.max(0, Math.min(1, value));
+  // Calculate Hue (Green=120 to Red=0)
+  const hue = (clamped * 120).toString(10);
+  return `hsl(${hue}, 100%, 50%)`;
 }
