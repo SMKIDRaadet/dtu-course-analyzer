@@ -97,7 +97,7 @@ function addRow(tbody, contentLeft, value = "", unit = "", colored = false, maxV
   span.textContent = value + unit;
 
   if (colored) {
-    span.style.backgroundColor = getColor(1 - value / maxVal);
+    span.style.backgroundColor = getColor(value / maxVal);
     // Add some padding/radius to make it look like the original chips
     span.style.padding = "2px 6px";
     span.style.borderRadius = "4px";
