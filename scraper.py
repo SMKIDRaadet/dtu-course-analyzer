@@ -53,7 +53,7 @@ def extractURLs(pre, post, body):
 
 def extractlinks(html):
     soup = BeautifulSoup(html, "html.parser")
-    anchors = soup.findAll('a')
+    anchors = soup.find_all('a')
     links = []
     for a in anchors:
         links.append(a['href'])
@@ -73,7 +73,7 @@ def respObj(url):
         return False
 
 
-respObj("http://karakterer.dtu.dk/Histogram/1/02110/Winter-2016")
+# respObj("http://karakterer.dtu.dk/Histogram/1/02110/Winter-2016")
 
 
 def RepresentsInt(s):
@@ -142,13 +142,15 @@ class Course(object):
                 participants = int(removeWhitespace(soup.find_all('table')[0].find_all('tr')[1].find_all('td')[1].text))
                 dic["participants"] = participants
 
+                # Fixed: findChildren -> find_all
                 pass_percentage = int(removeWhitespace(
-                    soup.find_all('table')[0].find_all('tr')[2].findChildren()[1].text.split("(")[1].split("%")[0]))
+                    soup.find_all('table')[0].find_all('tr')[2].find_all()[1].text.split("(")[1].split("%")[0]))
                 dic["pass_percentage"] = pass_percentage
 
                 try:
+                    # Fixed: findChildren -> find_all
                     avg = float(removeWhitespace(
-                        soup.find_all('table')[0].find_all('tr')[3].findChildren()[1].text.split(" (")[0]).replace(",",
+                        soup.find_all('table')[0].find_all('tr')[3].find_all()[1].text.split(" (")[0]).replace(",",
                                                                                                                    "."))
                     dic["avg"] = avg
                 except Exception:
@@ -166,10 +168,12 @@ class Course(object):
             html = respObj(url)
             if html:
                 soup = BeautifulSoup(html, 'html.parser')
-                containers = soup.findAll("div", {"class": "ResultCourseModelWrapper"})  # [2].find_all('tr')
+                # Fixed: findAll -> find_all
+                containers = soup.find_all("div", {"class": "ResultCourseModelWrapper"})
 
                 publicContainer = soup.find("div", {"id": "CourseResultsPublicContainer"})
-                dic["participants"] = int(publicContainer.find("table").findAll("tr")[1].findAll("td")[0].text)
+                # Fixed: findAll -> find_all
+                dic["participants"] = int(publicContainer.find("table").find_all("tr")[1].find_all("td")[0].text)
                 dic["timestamp"] = publicContainer.find("h2").text[-3:]
                 firstOptionLabel = soup.find("div", {"class": "RowWrapper"}).find("div", {
                     "class": "FinalEvaluation_Result_OptionColumn"})
@@ -183,7 +187,8 @@ class Course(object):
                     name = removeWhitespace(name)
                     dic[name] = {}
                     dic[name]["question"] = container.find("div", {"class": "FinalEvaluation_QuestionText"}).text
-                    for i, row in enumerate(container.findAll("div", {"class": "RowWrapper"})):
+                    # Fixed: findAll -> find_all
+                    for i, row in enumerate(container.find_all("div", {"class": "RowWrapper"})):
                         dic[name][i] = removeWhitespace(
                             row.find("div", {"class": "FinalEvaluation_Result_AnswerCountColumn"}).find("span").text)
             return dic
