@@ -72,3 +72,9 @@ If you are using Firefox, you can get the cookie by pressing F12, going to the s
  1. In a terminal window, `cd` into the `extension` directory within the project
  2. Run the extension using `web-ext run`
 
+## Privacy Policy
+**DTU Course Analyzer** respects your privacy.
+
+* **No Data Collection:** This extension does not collect, store, save, or transmit any of your personal data, browsing history, or user information to external servers or third parties.
+* **Local Processing:** All data analysis is performed entirely locally on your device using a static dataset bundled within the extension.
+* **Permissions:** The permission to access `kurser.dtu.dk` is strictly used to read the course number from the current URL and to insert the statistics table into the webpage. No data leaves your browser.
