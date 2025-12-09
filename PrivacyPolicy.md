@@ -12,7 +12,7 @@ The extension accesses the website `kurser.dtu.dk` solely for the purpose of:
 * Reading the course number from the current URL.
 * Injecting a statistics table into the webpage based on that course number.
 
-All data analysis is performed locally on your device using a static dataset bundled with the extension or fetched directly from our public GitHub repository.
+All data analysis is performed locally on your device using a static dataset bundled within the extension.
 
 ## 3. Third-Party Services
 This extension does not use any third-party analytics, tracking tools, or advertising networks.
