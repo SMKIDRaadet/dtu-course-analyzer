@@ -1,7 +1,7 @@
 {
     "name": "DTU Course Analyzer",
     "description": "Analyzes and scores courses on kurser.dtu.dk",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "manifest_version": 3,
     "icons": {
         "16": "icon16.png",
@@ -15,13 +15,22 @@
         }
     ],
     "background": {
-        "service_worker": "background.js"
+        "scripts": ["background.js"] 
     },
     "action": {
         "default_icon": "icon128.png"
     },
+    "permissions": [
+        "storage" 
+    ],
     "host_permissions": [
         "http://kurser.dtu.dk/*",
         "https://kurser.dtu.dk/*"
-    ]
+    ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "dtu-course-analyzer@salismaxima.github.io",
+            "strict_min_version": "109.0"
+        }
+    }
 }
