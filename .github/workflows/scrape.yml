@@ -46,4 +46,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Auto-update course data [skip ci]"
-          file_pattern: "extension/db/data.js data.json coursedic.json"
+          # Add extension/db.html to this list:
+          file_pattern: "extension/db/data.js data.json coursedic.json extension/db.html"
