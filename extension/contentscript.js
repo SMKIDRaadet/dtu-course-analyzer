@@ -1,21 +1,6 @@
-// Extract course ID from URL
-const courseMatch = window.location.href.match(
-  /^http.:\/\/kurser.dtu.dk\/course\/(?:[0-9-]*\/)?([0-9]{5})/
-);
-const courseId = courseMatch ? courseMatch[1] : null;
+// contentscript.js - Chrome Version 2.0.5
 
-if (courseId && courseId.length === 5) {
-  // Send message to background worker and wait for callback
-  chrome.runtime.sendMessage({ getInfo: courseId }, (response) => {
-    // Check if we got a valid response object for this course
-    if (response && response[courseId]) {
-      presentData(response[courseId]);
-    } else {
-      presentData(null);
-    }
-  });
-}
-
+// 1. Configuration (Must be defined BEFORE running logic)
 const outputArr = [
   ["Average grade", "avg", "", 12],
   ["Average grade percentile", "avgp", "%", 100],
@@ -25,6 +10,13 @@ const outputArr = [
   ["Lazyscore percentile 🍺", "lazyscore", "%", 100],
 ];
 
+// 2. Extract course ID from URL
+const courseMatch = window.location.href.match(
+  /^http.:\/\/kurser.dtu.dk\/course\/(?:[0-9-]*\/)?([0-9]{5})/
+);
+const courseId = courseMatch ? courseMatch[1] : null;
+
+// 3. UI Generation Functions
 function presentData(data) {
   // Vanilla JS selector: Find the table inside .box.information
   const infoBoxTable = document.querySelector(".box.information > table");
@@ -66,7 +58,7 @@ function presentData(data) {
 
   // Add Footer Link
   const link = document.createElement("a");
-  link.href = "https://github.com/SMKIDRaadet/dtu-course-analyzer/blob/master/README.md";
+  link.href = "https://github.com/SMKIDRaadet/dtu-course-analyzer";
   link.target = "_blank";
   
   const linkLabel = document.createElement("label");
@@ -115,4 +107,19 @@ function getColor(value) {
   // Calculate Hue (Green=120 to Red=0)
   const hue = (clamped * 120).toString(10);
   return `hsl(${hue}, 100%, 50%)`;
+}
+
+// 4. Main Execution Logic (Must be at the BOTTOM)
+if (courseId && courseId.length === 5) {
+  // DIRECT INJECTION STRATEGY:
+  // Manifest loads db/data.js BEFORE this script.
+  // We read 'window.data' directly.
+  const db = window.data; 
+
+  if (db && db[courseId]) {
+    presentData(db[courseId]);
+  } else {
+    console.error("DTU Analyzer: Course data not found. Ensure db/data.js starts with 'window.data = ...'");
+    presentData(null);
+  }
 }
